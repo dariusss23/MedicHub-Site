@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}MedicHub Profil{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'app/css/base.css' %}" type="text/css" />
+</head>
+<body>
+    <header>
+        <nav class="meniu">
+            <div class="logo"><span class="dot"></span>Medic<span>Hub</span></div>
+            <ul>
+                <li><a href="#">Misiunea noastra</a></li>
+                <li><a href="#">Stiri</a></li>
+                <li><a href="#">Reviste de specialitate</a></li>
+                <li><a href="#">Abonamente</a></li>
+                <li><a href="#">Cursuri</a></li>
+                <li><a href="#">Evenimente</a></li>
+                <li><a href="#">Servicii digitale</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2026 MedicHub</p>
+    </footer>
+</body>
+</html>

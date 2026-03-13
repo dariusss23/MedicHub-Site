@@ -1,0 +1,79 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'app/css/user_profile.css' %}">
+<link rel="stylesheet" href="{% static 'app/css/user_courses.css' %}">
+
+<div class="profile-container">
+    <aside class="sidebar">
+        <div class="user-card">
+            <div class="avatar-circle">
+                <i class="user-icon"></i>
+            </div>
+            <h3 class="user-name">Lionel Messi</h3>
+            <p class="points-text">Ai acumulat <br> <span>20 puncte</span></p>
+            <button class="btn-logout">Logout</button>
+        </div>
+
+        <ul class="profile-menu">
+            <li class="active"><a href="{% url 'user_courses' %}">Cursurile mele</a></li>
+            <li><a href="#">Evenimentele mele</a></li>
+            <li><a href="#">Revistele mele</a></li>
+            <li><a href="{% url 'user_profile' %}">Profilul meu</a></li>
+            <li><a href="#">Istoric tranzactii</a></li>
+            <li><a href="#">Certificatele mele</a></li>
+            <li><a href="#">Adauga credite</a></li>
+        </ul>
+    </aside>
+
+    <main class="profile-main">
+        <section class="hero-banner">
+            <div class="hero-text">
+                <h1><b>Cursurile mele</b></h1>
+                <p>Progresul tau academic la zi.</p>
+            </div>
+        </section>
+
+        <div class="courses-container">
+            <div class="course-row">
+                <div class="course-img" style="background-image: url('https://via.placeholder.com/120/008ba3/ffffff?text=MED');"></div>
+                <div class="course-body">
+                    <div class="course-info">
+                        <h3>Cardiologie Clinica si Explorari</h3>
+                        <p class="instructor">Prof. Dr. Popescu</p>
+                    </div>
+                    <div class="course-prog">
+                        <div class="prog-wrapper">
+                            <div class="prog-fill" style="width: 75%;"></div>
+                        </div>
+                        <span class="prog-percent">75%</span>
+                    </div>
+                    <div class="course-btn-area">
+                        <button class="btn-go">Continua</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-row">
+                <div class="course-img" style="background-image: url('https://via.placeholder.com/120/2f55d4/ffffff?text=DOC');"></div>
+                <div class="course-body">
+                    <div class="course-info">
+                        <h3>Managementul Urgentelor Medicale</h3>
+                        <p class="instructor">Dr. Ionescu Andrei</p>
+                    </div>
+                    <div class="course-prog">
+                        <div class="prog-wrapper">
+                            <div class="prog-fill" style="width: 30%;"></div>
+                        </div>
+                        <span class="prog-percent">30%</span>
+                    </div>
+                    <div class="course-btn-area">
+                        <button class="btn-go">Continua</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}

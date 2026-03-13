@@ -1,0 +1,92 @@
+.courses-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.course-row {
+    background: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+    transition: transform 0.2s;
+    height: 180px;
+}
+
+.course-row:hover {
+    transform: translateX(5px);
+    border-color: var(--medic-teal);
+}
+
+.course-img {
+    width: 80px;
+    height: 80px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.course-body {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 100px;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
+.course-info h3 {
+    font-size: 17px;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.course-info .instructor {
+    font-size: 16px;
+    color: #888;
+}
+
+.course-prog {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.prog-wrapper {
+    flex: 1;
+    height: 8px;
+    background: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.prog-fill {
+    height: 100%;
+    background: var(--medic-teal);
+}
+
+.prog-percent {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--medic-teal);
+    width: 40px;
+}
+
+.btn-go {
+    background-color: var(--medic-teal);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.btn-go:hover {
+    background-color: var(--medic-teal-dark);
+}
