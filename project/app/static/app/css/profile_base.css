@@ -1,0 +1,112 @@
+:root {
+    --medic-teal: #008ba3;
+    --medic-teal-dark: #006b7d;
+    --medic-red: #e63946;
+    --medic-gray: #777;
+    --bg-light: #f4f7f6;    
+}
+
+.profile-container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.sidebar {
+    position: sticky;
+    top: 20px;
+    height: calc(100vh - 40px);
+    scrollbar-width: none;
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+/* ── USER CARD ── */
+.user-card {
+    background: white;
+    padding: 30px;
+    border-radius: 62px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.10);
+    margin-bottom: 30px;
+}
+
+.avatar-circle {    
+    width: 120px;
+    height: 120px;
+    background-color: #ffe5e5;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+}
+
+.user-name {
+    color: var(--medic-gray);
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.points-text {
+    color: var(--medic-gray);
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.points-text span {
+    color: var(--medic-red);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.btn-logout {
+    background: white;
+    border: 1px solid var(--medic-red);
+    color: var(--medic-red);
+    padding: 8px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-logout:hover {
+    background: var(--medic-red);
+    color: white;
+}
+
+/* ── PROFILE MENU ── */
+.profile-menu {
+    list-style: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-menu li {
+    border-bottom: 1px solid #ddd;
+}
+
+.profile-menu li a {
+    display: block;
+    padding: 12px 0;
+    color: var(--medic-gray);
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.profile-menu li a:hover {
+    color: var(--medic-teal);
+    padding-left: 5px;
+}
+
+.profile-menu li.active {
+    background-color: #e0f4f6;
+    border-left: 5px solid var(--medic-teal);
+}
+
+.profile-menu li.active a {
+    color: var(--medic-teal);
+    font-weight: bold;
+    margin-left: 10px;
+}

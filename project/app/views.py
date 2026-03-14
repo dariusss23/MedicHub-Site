@@ -7,5 +7,14 @@ def index(request):
 def user_profile(request):
     return render(request, 'app/user_profile.html')
 
-def courses(request):
+def user_courses(request):
     return render(request, 'app/user_courses.html')
+
+def user_events(request):
+    return render(request, 'app/user_events.html')
+
+def user_magazines(request):
+    return render(request, 'app/user_magazines.html')
+
+def user_edit_profile(request):
+    return render(request, 'app/user_edit_profile.html')

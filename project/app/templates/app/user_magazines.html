@@ -1,0 +1,80 @@
+{% extends 'app/profile_base.html' %}
+{% load static %}
+
+{% block menu_magazines %}active{% endblock %}
+
+{% block profile_content %}
+<link rel="stylesheet" href="{% static 'app/css/user_magazines.css' %}">
+
+<section class="hero-banner">
+    <div class="hero-text">
+        <h1><b>Revistele mele</b></h1>
+        <p>Biblioteca ta digitală cu publicații de specialitate.</p>
+    </div>
+</section>
+
+<div class="magazines-toolbar">
+    <div class="search-box">
+        <input type="text" placeholder="Caută în publicații..." class="input-search">
+        <span class="icon-search">🔍︎</span>
+    </div>
+
+    <div class="controls-group">
+        <select class="select-filter">
+            <option value="">Specialitate</option>
+            <option value="ginecologie">Ginecologie</option>
+            <option value="cardiologie">Cardiologie</option>
+        </select>
+
+        <select class="select-year">
+            <option value="">An</option>
+            <option value="2026">2026</option>
+            <option value="2025">2025</option>
+        </select>
+    </div>
+</div>
+
+<div class="magazines-grid">
+    <div class="magazine-card">
+        <div class="magazine-cover">
+            <img src="https://placehold.co/300x400/008ba3/ffffff?text=Ginecologia.ro" alt="Cover">
+            <div class="cover-overlay">
+                <button class="btn-read">Citește Online</button>
+            </div>
+        </div>
+        <div class="magazine-info">
+            <span class="mag-tag">Ginecologie</span>
+            <h3>Ginecologia.ro</h3>
+            <p class="mag-issue">Ediția nr. 4 / 2025</p>
+            <p class="mag-date">11 Decembrie 2025</p>
+            
+            <div class="mag-actions">
+                <a href="#" class="btn-pdf">
+                    <span>Descarcă PDF</span> 
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="magazine-card">
+        <div class="magazine-cover">
+            <img src="https://placehold.co/300x400/2f55d4/ffffff?text=Pediatria" alt="Cover">
+            <div class="cover-overlay">
+                <button class="btn-read">Citește Online</button>
+            </div>
+        </div>
+        <div class="magazine-info">
+            <span class="mag-tag blue">Pediatrie</span>
+            <h3>Pediatria</h3>
+            <p class="mag-issue">Ediția nr. 2 / 2025</p>
+            <p class="mag-date">15 Iunie 2025</p>
+            
+            <div class="mag-actions">
+                <a href="#" class="btn-pdf">
+                    <span>Descarcă PDF</span> 
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

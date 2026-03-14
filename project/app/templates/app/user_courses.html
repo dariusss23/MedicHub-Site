@@ -1,79 +1,87 @@
-{% extends 'app/base.html' %}
+{% extends 'app/profile_base.html' %}
 {% load static %}
 
-{% block content %}
-<link rel="stylesheet" href="{% static 'app/css/user_profile.css' %}">
+{% block menu_courses %}active{% endblock %}
+
+{% block profile_content %}
 <link rel="stylesheet" href="{% static 'app/css/user_courses.css' %}">
 
-<div class="profile-container">
-    <aside class="sidebar">
-        <div class="user-card">
-            <div class="avatar-circle">
-                <i class="user-icon"></i>
-            </div>
-            <h3 class="user-name">Lionel Messi</h3>
-            <p class="points-text">Ai acumulat <br> <span>20 puncte</span></p>
-            <button class="btn-logout">Logout</button>
+<section class="hero-banner">
+    <div class="hero-text">
+        <h1><b>Cursurile mele</b></h1>
+        <p>Progresul tau academic la zi.</p>
+    </div>
+</section>
+
+<div class="courses-container">
+    <div class="course-row">
+        <div class="course-img" style="background-image: url('https://placehold.co/150x150/008ba3/ffffff?text=MED');">
+            <span class="badge-credits">12 Puncte</span>
         </div>
 
-        <ul class="profile-menu">
-            <li class="active"><a href="{% url 'user_courses' %}">Cursurile mele</a></li>
-            <li><a href="#">Evenimentele mele</a></li>
-            <li><a href="#">Revistele mele</a></li>
-            <li><a href="{% url 'user_profile' %}">Profilul meu</a></li>
-            <li><a href="#">Istoric tranzactii</a></li>
-            <li><a href="#">Certificatele mele</a></li>
-            <li><a href="#">Adauga credite</a></li>
-        </ul>
-    </aside>
-
-    <main class="profile-main">
-        <section class="hero-banner">
-            <div class="hero-text">
-                <h1><b>Cursurile mele</b></h1>
-                <p>Progresul tau academic la zi.</p>
-            </div>
-        </section>
-
-        <div class="courses-container">
-            <div class="course-row">
-                <div class="course-img" style="background-image: url('https://via.placeholder.com/120/008ba3/ffffff?text=MED');"></div>
-                <div class="course-body">
-                    <div class="course-info">
-                        <h3>Cardiologie Clinica si Explorari</h3>
-                        <p class="instructor">Prof. Dr. Popescu</p>
-                    </div>
-                    <div class="course-prog">
-                        <div class="prog-wrapper">
-                            <div class="prog-fill" style="width: 75%;"></div>
-                        </div>
-                        <span class="prog-percent">75%</span>
-                    </div>
-                    <div class="course-btn-area">
-                        <button class="btn-go">Continua</button>
-                    </div>
+        <div class="course-body">
+            <div class="course-top">
+                <div class="title-area">
+                    <h3>Profilaxia tromboembolismului venos și importanța acesteia în chirurgia ortopedică</h3>
+                    <p class="validity"><b>Valabilitate: 01.08.2025 - 31.07.2026</b></p>
+                </div>
+                <div class="download-container">
+                    <a href="#" class="download-icon-link" title="Descarcă certificat">
+                        <div class="download-circle">⬇</div>
+                        <span>Certificat</span>
+                    </a>
                 </div>
             </div>
 
-            <div class="course-row">
-                <div class="course-img" style="background-image: url('https://via.placeholder.com/120/2f55d4/ffffff?text=DOC');"></div>
-                <div class="course-body">
-                    <div class="course-info">
-                        <h3>Managementul Urgentelor Medicale</h3>
-                        <p class="instructor">Dr. Ionescu Andrei</p>
+            <div class="course-mid">
+                <div class="rating-stars">
+                    <span class="rating-val">4.8</span>
+                    <span class="stars">★★★★<span class="star-dim">★</span></span>
+                </div>
+                <div class="prog-section">
+                    <div class="prog-wrapper">
+                        <div class="prog-fill" style="width: 100%; background-color: green;"></div>
                     </div>
-                    <div class="course-prog">
-                        <div class="prog-wrapper">
-                            <div class="prog-fill" style="width: 30%;"></div>
-                        </div>
-                        <span class="prog-percent">30%</span>
-                    </div>
-                    <div class="course-btn-area">
-                        <button class="btn-go">Continua</button>
-                    </div>
+                    <span class="prog-percent" style="color: green;">100%</span>
                 </div>
             </div>
+
+            <div class="course-bottom">
+                <button class="btn-go">Vezi curs</button>
+            </div>
         </div>
-    </main>
+    </div>
+
+    <div class="course-row">
+        <div class="course-img" style="background-image: url('https://placehold.co/150x150/008ba3/ffffff?text=MED');">
+            <span class="badge-credits">6 Puncte</span>
+        </div>
+
+        <div class="course-body">
+            <div class="course-top">
+                <div class="title-area">
+                    <h3>O soluţie pentru pacienţii cu DZ tip 2 inadecvat controlaţi cu insulină bazală generația I</h3>
+                    <p class="validity"><b>Valabilitate: 01.01.2025 - 31.10.2026</b></p>
+                </div>
+            </div>
+
+            <div class="course-mid">
+                <div class="rating-stars">
+                    <span class="rating-val">3.5</span>
+                    <span class="stars">★★★<span class="star-dim">★★</span></span>
+                </div>
+                <div class="prog-section">
+                    <div class="prog-wrapper">
+                        <div class="prog-fill" style="width: 70%; background-color: #e63946;"></div>
+                    </div>
+                    <span class="prog-percent" style="color: #e63946;">70%</span>
+                </div>
+            </div>
+
+            <div class="course-bottom">
+                <button class="btn-go">Vezi curs</button>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

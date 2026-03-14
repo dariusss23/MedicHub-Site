@@ -1,0 +1,188 @@
+.hero-banner {
+    background-color: var(--medic-teal);
+    border-radius: 12px;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    margin-bottom: 30px;
+    height: 160px;
+}
+
+.hero-text h1 {
+    font-size: 42px;
+    font-weight: 400;
+}
+
+.hero-text p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+.edit-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+/* Tab styling */
+/* Containerul tab-urilor */
+.tab-header {
+    display: flex;
+    gap: 8px; /* Spațiu mic între tab-uri, ca să nu pară înghesuite */
+    background: transparent;
+    padding-left: 10px;
+    margin-bottom: -1px; /* Le "lipim" de containerul de mai jos */
+    position: relative;
+    z-index: 2;
+}
+
+/* Stilul de Tab (nu de buton clasic) */
+.tab-btn {
+    border: 1px solid #eee;
+    border-bottom: none; /* Scoatem linia de jos ca să se unească cu panoul */
+    background: #ffffff;
+    color: #444;
+    padding: 14px 28px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    
+    /* Rotunjim doar colțurile de sus, exact ca în screenshot-uri */
+    border-radius: 12px 12px 0 0; 
+    
+    transition: all 0.25s ease;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.03); /* Umbră fină în sus */
+    outline: none;
+}
+
+/* Efectul de Hover (Hover Feedback) */
+.tab-btn:hover:not(.active) {
+    background: #f0f8f9; /* Un turcoaz extrem de pal */
+    color: var(--medic-teal);
+    transform: translateY(-3px); /* Se ridică puțin când pui mouse-ul - arată că e clickabil */
+}
+
+/* Stilul pentru Tab-ul Activ */
+.tab-btn.active {
+    background: var(--medic-teal);
+    color: white;
+    border-color: var(--medic-teal);
+    box-shadow: 0 -5px 15px rgba(0, 139, 163, 0.2);
+    transform: translateY(-2px); /* Rămâne puțin ridicat */
+}
+
+/* Panoul de conținut (cel de sub tab-uri) */
+.edit-form {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 0 12px 12px 12px; /* Rotunjim tot, mai puțin colțul de sus-stânga unde e primul tab */
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 1;
+}
+
+/* Form layouts */
+.tab-content {
+    display: none;
+    padding: 30px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-size: 13px;
+    color: #888;
+    font-weight: 600;
+}
+
+.input-group input, 
+.input-group select, 
+.input-group textarea {
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background: #fafafa;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+    outline: none;
+}
+
+.warning-text {
+    color: var(--medic-red);
+    font-size: 11px;
+    margin-bottom: 5px;
+}
+
+/* Toggle Switch Styling */
+.toggle-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 24px;
+}
+
+.switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px; width: 18px;
+    left: 3px; bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider { background-color: var(--medic-teal); }
+input:checked + .slider:before { transform: translateX(21px); }
+
+/* Footer */
+.form-footer {
+    padding: 20px 30px;
+    border-top: 1px solid #eee;
+}
+
+.btn-save {
+    background: var(--medic-teal);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}

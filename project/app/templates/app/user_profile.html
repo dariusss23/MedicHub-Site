@@ -1,100 +1,65 @@
-{% extends 'app/base.html' %}
+{% extends 'app/profile_base.html' %}
 {% load static %}
 
-{% block content %}
+{% block menu_profile %}active{% endblock %}
 
+{% block profile_content %}
 <link rel="stylesheet" href="{% static 'app/css/user_profile.css' %}">
 
-<div class="profile-container">
-    <aside class="sidebar">
-        <div class="user-card">
-            <div class="avatar-circle">
-                <i class="user-icon"></i>
-            </div>
-            <h3 class="user-name">Lionel Messi</h3>
-            <p class="points-text">Ai acumulat <br> <span>20 puncte</span></p>
-            <button class="btn-logout">Logout</button>
+<section class="hero-banner">
+    <div class="hero-text">
+        <h1><b>Contul meu</b></h1>
+        <p>Bine ai venit, Messi !</p>
+    </div>
+</section>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon icon-blue"><span>📚</span></div>
+        <div class="stat-content">
+            <p class="stat-label"><b>Cursuri Active</b></p>
+            <h2 class="stat-value">5</h2>
+            <p class="stat-detail">2 in progres</p>
         </div>
-
-        <ul class="profile-menu">
-            <li><a href="{% url 'user_courses' %}">Cursurile mele</a></li>
-            <li><a href="{% url 'user_courses' %}">Evenimentele mele</a></li>
-            <li><a href="{% url 'user_courses' %}">Revistele mele</a></li>
-            <li><a href="{% url 'user_courses' %}">Profilul meu</a></li>
-            <li><a href="{% url 'user_courses' %}">Istoric tranzactii</a></li>
-            <li><a href="{% url 'user_courses' %}">Certificatele mele</a></li>
-            <li><a href="{% url 'user_courses' %}">Adauga credite</a></li>
-        </ul>
-    </aside>
-
-    <main class="profile-main">
-        <section class="hero-banner">
-            <div class="hero-text">
-                <h1><b>Contul meu</b></h1>
-                <p>Bine ai venit, Messi !</p>
-            </div>
-        </section>
-
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-icon icon-blue">
-                    <span>📚</span>
-                </div>
-                <div class="stat-content">
-                    <p class="stat-label"><b>Cursuri Active</b></p>
-                    <h2 class="stat-value">5</h2>
-                    <p class="stat-detail">2 in progres</p>
-                </div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-icon icon-purple">
-                    <span>📅</span>
-                </div>
-                <div class="stat-content">
-                    <p class="stat-label"><b>Evenimente</b></p>
-                    <h2 class="stat-value">3</h2>
-                    <p class="stat-detail">Urmatorul: 15 Mar</p>
-                </div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-icon icon-green">
-                    <span>🏅</span>
-                </div>
-                <div class="stat-content">
-                    <p class="stat-label"><b>Certificate</b></p>
-                    <h2 class="stat-value">12</h2>
-                    <p class="stat-detail">3 noi disponibile</p>
-                </div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-icon icon-orange">
-                    <span>📈</span>
-                </div>
-                <div class="stat-content">
-                    <p class="stat-label"><b>Puncte Totale</b></p>
-                    <h2 class="stat-value">20</h2>
-                    <p class="stat-detail">+5 luna aceasta</p>
-                </div>
-            </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon icon-purple"><span>📅</span></div>
+        <div class="stat-content">
+            <p class="stat-label"><b>Evenimente</b></p>
+            <h2 class="stat-value">3</h2>
+            <p class="stat-detail">Urmatorul: 15 Mar</p>
         </div>
-
-        <section class="info-cards">
-            <div class="card">
-                <p class="card-alert">Nu ai evenimente noi</p>
-                <button class="btn-primary">Vezi evenimentele</button>
-            </div>
-            <div class="card">
-                <p class="card-alert">Nu esti inscris la nici un eveniment</p>
-                <button class="btn-primary">Vezi evenimentele mele</button>
-            </div>
-            <div class="card">
-                <p class="card-alert">Ai 1 teste de dat</p>
-                <button class="btn-primary">Vezi cursuri</button>
-            </div>
-        </section>
-    </main>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon icon-green"><span>🏅</span></div>
+        <div class="stat-content">
+            <p class="stat-label"><b>Certificate</b></p>
+            <h2 class="stat-value">12</h2>
+            <p class="stat-detail">3 noi disponibile</p>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon icon-orange"><span>📈</span></div>
+        <div class="stat-content">
+            <p class="stat-label"><b>Puncte Totale</b></p>
+            <h2 class="stat-value">20</h2>
+            <p class="stat-detail">+5 luna aceasta</p>
+        </div>
+    </div>
 </div>
+
+<section class="info-cards">
+    <div class="card">
+        <p class="card-alert">Nu ai evenimente noi</p>
+        <button class="btn-primary">Vezi evenimentele</button>
+    </div>
+    <div class="card">
+        <p class="card-alert">Nu esti inscris la nici un eveniment</p>
+        <button class="btn-primary">Vezi evenimentele mele</button>
+    </div>
+    <div class="card">
+        <p class="card-alert">Ai 1 teste de dat</p>
+        <button class="btn-primary">Vezi cursuri</button>
+    </div>
+</section>
 {% endblock %}

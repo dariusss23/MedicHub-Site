@@ -1,0 +1,198 @@
+.hero-banner {
+    background-color: var(--medic-teal);
+    border-radius: 12px;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    margin-bottom: 30px;
+    height: 160px;
+}
+
+.hero-text h1 {
+    font-size: 42px;
+    font-weight: 400;
+}
+
+.hero-text p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+.events-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    margin-bottom: 25px;
+    gap: 15px;
+}
+
+.search-box {
+    position: relative;
+    flex: 1;
+}
+
+.input-search {
+    width: 100%;
+    padding: 10px 15px 10px 40px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    outline: none;
+}
+
+.icon-search {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+}
+
+.controls-group {
+    display: flex;
+    gap: 12px;
+}
+
+.select-year {
+    padding: 8px 12px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    color: #555;
+    outline: none;
+}
+
+.btn-calendar {
+    background: white;
+    border: 1px solid var(--medic-teal);
+    color: var(--medic-teal);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.2s;
+}
+
+.btn-calendar:hover {
+    background: var(--medic-teal);
+    color: white;
+}
+
+.event-row {
+    background: white;
+    border-radius: 12px;
+    display: flex;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.event-row:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.event-date-box {
+    background: #f8f9fa;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #eee;
+}
+
+.event-date-box .day {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--medic-teal);
+}
+
+.event-date-box .month {
+    font-size: 13px;
+    font-weight: bold;
+    color: #888;
+}
+
+.event-body {
+    flex: 1;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.event-meta {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.event-tag {
+    background: #e0f4f6;
+    color: var(--medic-teal);
+    font-size: 11px;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.event-tag.physical {
+    background: #fef3c7;
+    color: #d97706;
+}
+
+.event-points {
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--medic-red);
+}
+
+.event-main-info h3 {
+    font-size: 17px;
+    margin-bottom: 4px;
+    color: #333;
+}
+
+.event-location {
+    font-size: 13px;
+    color: #888;
+}
+
+.event-action {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin-right: 30px;
+    gap: 10px;
+}
+
+.status-badge {
+    font-size: 15px;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.confirmed { background: #dcfce7; color: #15803d; }
+.pending { background: #f3f4f6; color: #666; }
+
+.btn-event-details {
+    background: none;
+    border: none;
+    color: var(--medic-teal);
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 15px;
+}
