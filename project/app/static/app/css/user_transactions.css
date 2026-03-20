@@ -20,7 +20,6 @@
     opacity: 0.9;
 }
 
-/* Toolbar & Summary */
 .transaction-summary {
     display: flex;
     background: white;
@@ -31,13 +30,30 @@
     align-items: center;
 }
 
-.summary-item { flex: 1; text-align: center; }
-.summary-item p { font-size: 13px; color: #888; margin-bottom: 5px; }
-.summary-item h3 { font-size: 24px; color: var(--medic-teal); font-weight: 800; }
+.summary-item { 
+    flex: 1; 
+    text-align: center; 
+}
 
-.summary-divider { width: 1px; height: 40px; background: #eee; margin: 0 20px; }
+.summary-item p { 
+    font-size: 13px; 
+    color: #888; 
+    margin-bottom: 5px; 
+}
 
-/* Receipt Card Layout */
+.summary-item h3 { 
+    font-size: 24px; 
+    color: var(--medic-teal); 
+    font-weight: 800; 
+}
+
+.summary-divider { 
+    width: 1px; 
+    height: 40px; 
+    background: #eee; 
+    margin: 0 20px; 
+}
+
 .transactions-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -75,9 +91,18 @@
     border-radius: 5px;
 }
 
-.status-indicator { font-size: 12px; font-weight: 600; }
-.status-indicator.success { color: #10b981; }
-.status-indicator.pending { color: #f59e0b; }
+.status-indicator { 
+    font-size: 12px; 
+    font-weight: 600; 
+}
+
+.status-indicator.success { 
+    color: #10b981; 
+}
+
+.status-indicator.pending { 
+    color: #f59e0b; 
+}
 
 .receipt-body h3 {
     font-size: 17px;
@@ -86,7 +111,12 @@
     line-height: 1.4;
 }
 
-.transaction-id { font-size: 12px; color: #aaa; margin-bottom: 15px; font-family: monospace; }
+.transaction-id { 
+    font-size: 12px; 
+    color: #aaa; 
+    margin-bottom: 15px; 
+    font-family: monospace; 
+}
 
 .receipt-details {
     background: #fcfcfc;
@@ -102,20 +132,31 @@
     margin-bottom: 5px;
 }
 
-.detail span { color: #888; }
+.detail span { 
+    color: #888; 
+}
 
-/* Footer cu suma prominentă */
 .receipt-footer {
     margin-top: auto;
-    border-top: 1px dashed #ddd; /* Efect de tăietură de chitanță */
+    border-top: 1px dashed #ddd;
     padding-top: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.amount-area p { font-size: 12px; color: #888; margin: 0; }
-.total-price { font-size: 22px; color: #111; font-weight: 800; margin: 0; }
+.amount-area p { 
+    font-size: 12px; 
+    color: #888; 
+    margin: 0; 
+}
+
+.total-price { 
+    font-size: 22px; 
+    color: #111; 
+    font-weight: 800; 
+    margin: 0; 
+}
 
 .download-btn {
     background: white;
@@ -129,5 +170,15 @@
     transition: 0.3s;
 }
 
-.download-btn:hover { background: var(--medic-red); color: white; }
-.no-invoice { font-size: 11px; color: #aaa; font-style: italic; max-width: 120px; text-align: right; }
+.download-btn:hover { 
+    background: var(--medic-red); 
+    color: white; 
+}
+
+.no-invoice { 
+    font-size: 11px; 
+    color: #aaa; 
+    font-style: italic; 
+    max-width: 120px; 
+    text-align: right; 
+}

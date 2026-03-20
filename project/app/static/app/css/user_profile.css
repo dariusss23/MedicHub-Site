@@ -1,4 +1,3 @@
-/* ── HERO BANNER ── */
 .hero-banner {
     background-color: var(--medic-teal);
     border-radius: 12px;
@@ -21,7 +20,6 @@
     opacity: 0.9;
 }
 
-/* ── STATS GRID ── */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -80,7 +78,6 @@
     margin: 0;
 }
 
-/* ── INFO CARDS ── */
 .info-cards {
     display: grid;
     gap: 20px;

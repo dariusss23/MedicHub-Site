@@ -184,8 +184,15 @@
     border-radius: 20px;
 }
 
-.confirmed { background: #dcfce7; color: #15803d; }
-.pending { background: #f3f4f6; color: #666; }
+.confirmed { 
+    background: #dcfce7; 
+    color: #15803d; 
+}
+
+.pending { 
+    background: #f3f4f6; 
+    color: #666; 
+}
 
 .btn-event-details {
     background: none;

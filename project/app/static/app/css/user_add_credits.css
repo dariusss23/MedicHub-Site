@@ -24,11 +24,21 @@
     padding: 10px;
 }
 
-.header-section { margin-bottom: 30px; }
-.header-section h2 { font-size: 28px; color: #333; margin-bottom: 5px; }
-.header-section p { color: #888; font-size: 15px; }
+.header-section { 
+    margin-bottom: 30px;
+}
 
-/* Form Card - Stil curat, alb cu border teal în partea de sus */
+.header-section h2 { 
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.header-section p { 
+    color: #888; 
+    font-size: 15px; 
+}
+
 .glass-form-card {
     background: white;
     padding: 30px;
@@ -52,8 +62,17 @@
     align-items: flex-end;
 }
 
-.input-field { display: flex; flex-direction: column; gap: 8px; }
-.input-field label { font-size: 13px; font-weight: 700; color: #555; }
+.input-field {
+    display: flex;
+    flex-direction: 
+    column; gap: 8px; 
+}
+
+.input-field label { 
+    font-size: 13px; 
+    font-weight: 700; 
+    color: #555; 
+}
 
 .input-field input, .input-field select {
     padding: 12px 15px;
@@ -81,11 +100,18 @@
     transition: 0.3s;
 }
 
-.btn-submit-emc:hover { background: var(--medic-teal-dark); transform: translateY(-2px); }
+.btn-submit-emc:hover { 
+    background: var(--medic-teal-dark); 
+    transform: translateY(-2px); 
+}
 
-.disclaimer-text { font-size: 12px; color: #aaa; margin-top: 20px; font-style: italic; }
+.disclaimer-text { 
+    font-size: 12px; 
+    color: #aaa; 
+    margin-top: 20px; 
+    font-style: italic; 
+}
 
-/* History List - Stil rafinat */
 .history-header {
     display: flex;
     justify-content: space-between;
@@ -113,7 +139,10 @@
     transition: 0.3s;
 }
 
-.emc-item:hover { border-color: var(--medic-teal); transform: translateX(5px); }
+.emc-item:hover { 
+    border-color: var(--medic-teal); 
+    transform: translateX(5px); 
+}
 
 .emc-score {
     width: 70px;
@@ -122,12 +151,32 @@
     margin-right: 25px;
 }
 
-.emc-score strong { display: block; font-size: 28px; color: var(--medic-teal); }
-.emc-score span { font-size: 11px; font-weight: bold; color: #999; }
+.emc-score strong { 
+    display: block; 
+    font-size: 28px; 
+    color: var(--medic-teal); 
+}
 
-.emc-info { flex: 1; }
-.emc-info h4 { font-size: 17px; margin: 5px 0; color: #333; }
-.emc-year { font-size: 13px; color: #aaa; }
+.emc-score span { 
+    font-size: 11px; 
+    font-weight: bold; 
+    color: #999; 
+}
+
+.emc-info { 
+    flex: 1; 
+}
+
+.emc-info h4 { 
+    font-size: 17px; 
+    margin: 5px 0; 
+    color: #333; 
+}
+
+.emc-year { 
+    font-size: 13px; 
+    color: #aaa; 
+}
 
 .type-tag {
     font-size: 10px;
@@ -135,8 +184,16 @@
     padding: 3px 8px;
     border-radius: 4px;
 }
-.magazine { background: #eef2ff; color: #2f55d4; }
-.external { background: #fff9db; color: #f08c00; }
+
+.magazine { 
+    background: #eef2ff; 
+    color: #2f55d4; 
+}
+
+.external {
+    background: #fff9db; 
+    color: #f08c00; 
+}
 
 .check-icon-verify {
     width: 32px;

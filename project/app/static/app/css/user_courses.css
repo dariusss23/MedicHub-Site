@@ -20,7 +20,6 @@
     opacity: 0.9;
 }
 
-/* Container și rând */
 .course-row {
     background: white;
     border-radius: 12px;
@@ -33,7 +32,6 @@
     min-height: 180px;
 }
 
-/* Imagine și Badge */
 .course-img {
     width: 140px;
     height: 140px;
@@ -49,7 +47,7 @@
     position: absolute;
     top: 8px;
     left: 8px;
-    background: #f97316; /* Portocaliu credite */
+    background: #f97316;
     color: white;
     padding: 3px 8px;
     border-radius: 4px;
@@ -57,7 +55,6 @@
     font-weight: bold;
 }
 
-/* Structura corpului */
 .course-body {
     display: flex;
     flex-direction: column;
@@ -82,7 +79,6 @@
     color: #999;
 }
 
-/* Rating și Stelute */
 .course-mid {
     display: flex;
     align-items: center;
@@ -96,11 +92,20 @@
     gap: 8px;
 }
 
-.rating-val { font-weight: bold; font-size: 14px; }
-.stars { color: #ffc107; font-size: 16px; }
-.star-dim { color: #ddd; }
+.rating-val { 
+    font-weight: bold; 
+    font-size: 14px;
+}
 
-/* BARA DE PROGRES (Inapoi la designul tau) */
+.stars { 
+    color: #ffc107; 
+    font-size: 16px; 
+}
+
+.star-dim { 
+    color: #ddd; 
+}
+
 .prog-section {
     flex-grow: 1;
     display: flex;
@@ -118,7 +123,7 @@
 
 .prog-fill {
     height: 100%;
-    background: var(--medic-teal); /* Albastru la cursuri active, Rosu la 100% via inline style */
+    background: var(--medic-teal);
 }
 
 .prog-percent {
@@ -127,7 +132,6 @@
     min-width: 35px;
 }
 
-/* Iconita de download tip "Link" */
 .download-container {
     text-align: center;
 }
@@ -154,7 +158,12 @@
     color: green;
 }
 
-.download-icon-link span { font-size: 10px; font-weight: bold; text-transform: uppercase; color:green;}
+.download-icon-link span { 
+    font-size: 10px; 
+    font-weight: bold; 
+    text-transform: uppercase; 
+    color:green;
+}
 
 .download-circle:hover {
     background: green;
@@ -162,7 +171,6 @@
     border-color: green;
 }
 
-/* Butonul final */
 .btn-go {
     align-self: flex-start;
     background: var(--medic-teal);
