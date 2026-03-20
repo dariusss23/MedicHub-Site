@@ -1,0 +1,133 @@
+.hero-banner {
+    background-color: var(--medic-teal);
+    border-radius: 12px;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    margin-bottom: 30px;
+    height: 160px;
+}
+
+.hero-text h1 {
+    font-size: 42px;
+    font-weight: 400;
+}
+
+.hero-text p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+/* Toolbar & Summary */
+.transaction-summary {
+    display: flex;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+.summary-item { flex: 1; text-align: center; }
+.summary-item p { font-size: 13px; color: #888; margin-bottom: 5px; }
+.summary-item h3 { font-size: 24px; color: var(--medic-teal); font-weight: 800; }
+
+.summary-divider { width: 1px; height: 40px; background: #eee; margin: 0 20px; }
+
+/* Receipt Card Layout */
+.transactions-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+}
+
+.receipt-card {
+    background: white;
+    border-radius: 15px;
+    border: 1px solid #eee;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.receipt-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.receipt-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.category-tag {
+    background: #e0f4f6;
+    color: var(--medic-teal);
+    font-size: 11px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 5px;
+}
+
+.status-indicator { font-size: 12px; font-weight: 600; }
+.status-indicator.success { color: #10b981; }
+.status-indicator.pending { color: #f59e0b; }
+
+.receipt-body h3 {
+    font-size: 17px;
+    color: #333;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.transaction-id { font-size: 12px; color: #aaa; margin-bottom: 15px; font-family: monospace; }
+
+.receipt-details {
+    background: #fcfcfc;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.detail {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.detail span { color: #888; }
+
+/* Footer cu suma prominentă */
+.receipt-footer {
+    margin-top: auto;
+    border-top: 1px dashed #ddd; /* Efect de tăietură de chitanță */
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.amount-area p { font-size: 12px; color: #888; margin: 0; }
+.total-price { font-size: 22px; color: #111; font-weight: 800; margin: 0; }
+
+.download-btn {
+    background: white;
+    border: 1px solid var(--medic-red);
+    color: var(--medic-red);
+    padding: 8px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.download-btn:hover { background: var(--medic-red); color: white; }
+.no-invoice { font-size: 11px; color: #aaa; font-style: italic; max-width: 120px; text-align: right; }

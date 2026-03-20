@@ -18,3 +18,12 @@ def user_magazines(request):
 
 def user_edit_profile(request):
     return render(request, 'app/user_edit_profile.html')
+
+def user_transactions(request):
+    return render(request, 'app/user_transactions.html')
+
+def user_certificates(request):
+    return render(request, 'app/user_certificates.html')
+
+def user_add_credits(request):
+    return render(request, 'app/user_add_credits.html')

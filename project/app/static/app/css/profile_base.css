@@ -11,6 +11,7 @@
     grid-template-columns: 300px 1fr;
     gap: 30px;
     align-items: start;
+    margin-bottom: 80px;
 }
 
 .sidebar {
@@ -24,7 +25,6 @@
     display: none;
 }
 
-/* ── USER CARD ── */
 .user-card {
     background: white;
     padding: 30px;
@@ -34,12 +34,21 @@
     margin-bottom: 30px;
 }
 
-.avatar-circle {    
-    width: 120px;
-    height: 120px;
-    background-color: #ffe5e5;
+.avatar-circle {
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+}
+
+.fa-user-circle {
+    font-size: 130px;
+    line-height: 1;
+    color: #666;
 }
 
 .user-name {
@@ -75,7 +84,6 @@
     color: white;
 }
 
-/* ── PROFILE MENU ── */
 .profile-menu {
     list-style: none;
     background: transparent;

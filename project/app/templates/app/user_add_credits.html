@@ -1,0 +1,87 @@
+{% extends 'app/profile_base.html' %}
+{% load static %}
+
+{% block menu_credits %}active{% endblock %}
+
+{% block profile_content %}
+<link rel="stylesheet" href="{% static 'app/css/user_add_credits.css' %}">
+
+<section class="hero-banner">
+    <div class="hero-text">
+        <h1><b>Adaugă Credite EMC</b></h1>
+        <p>Înregistrează manual punctele obținute la congrese și evenimente externe.</p>
+    </div>
+</section>
+
+<div class="add-credits-wrapper">
+    <div class="glass-form-card">
+        <form class="emc-form">
+            <div class="form-main-row">
+                <div class="input-field">
+                    <label>Nume Eveniment</label>
+                    <input type="text" placeholder="Ex: Congres Național de Pediatrie">
+                </div>
+                <div class="input-field">
+                    <label>Organizator</label>
+                    <input type="text" placeholder="Ex: Colegiul Medicilor">
+                </div>
+            </div>
+
+            <div class="form-footer-row">
+                <div class="input-field small">
+                    <label>Credite</label>
+                    <input type="number" placeholder="0">
+                </div>
+                <div class="input-field small">
+                    <label>Anul</label>
+                    <select>
+                        <option>2026</option>
+                        <option>2025</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-submit-emc">Adaugă Credite</button>
+            </div>
+            <p class="disclaimer-text">MedicHub nu este responsabil de corectitudinea informațiilor introduse manual.</p>
+        </form>
+    </div>
+
+    <div class="credits-history">
+        <div class="history-header">
+            <h3>Credite înregistrate</h3>
+            <span class="total-badge">Total: 40 Puncte</span>
+        </div>
+
+        <div class="emc-list">
+            <div class="emc-item">
+                <div class="emc-score">
+                    <strong>20</strong>
+                    <span>EMC</span>
+                </div>
+                <div class="emc-info">
+                    <span class="type-tag magazine">REVISTĂ</span>
+                    <h4>Abonament reviste: Medic.ro, Ginecologia.ro</h4>
+                    <span class="emc-year">Sesiunea 2026</span>
+                </div>
+                <div class="emc-status">
+                    <span class="check-icon-verify">✓</span>
+                </div>
+            </div>
+
+            <div class="emc-item">
+                <div class="emc-score">
+                    <strong>10</strong>
+                    <span>EMC</span>
+                </div>
+                <div class="emc-info">
+                    <span class="type-tag external">EXTERN</span>
+                    <h4>Eveniment Test - Workshop Chirurgie</h4>
+                    <span class="emc-year">Sesiunea 2025</span>
+                </div>
+                <div class="emc-status">
+                    <span class="check-icon-wait">⏱︎</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

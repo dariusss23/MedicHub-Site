@@ -1,0 +1,110 @@
+/* Toolbar */
+.cert-toolbar {
+    display: flex;
+    justify-content: space-between;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+    gap: 15px;
+}
+
+.search-box { position: relative; flex: 1; }
+.input-search { width: 100%; padding: 10px 15px 10px 40px; border: 1px solid #eee; border-radius: 8px; outline: none; }
+.icon-search { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #aaa; }
+.select-year { padding: 8px 12px; border: 1px solid #eee; border-radius: 8px; color: #555; outline: none; }
+
+/* Grid Layout */
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* Card Styling */
+.cert-card {
+    background: white;
+    border-radius: 15px;
+    border: 1px solid #eee;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cert-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.cert-preview {
+    position: relative;
+    aspect-ratio: 4/3;
+    background: #f8f9fa;
+    overflow: hidden;
+}
+
+.cert-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+}
+
+.points-badge {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background: var(--medic-teal);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Info Section */
+.cert-info {
+    padding: 20px;
+}
+
+.cert-info h3 {
+    font-size: 16px;
+    color: #111;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    height: 44px; /* Forțăm alinierea pe două rânduri */
+    overflow: hidden;
+}
+
+.cert-date {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+/* Actions */
+.cert-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 15px;
+}
+
+.btn-download-main {
+    background: transparent;
+    border: 1px solid var(--medic-red);
+    color: var(--medic-red);
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-download-main:hover {
+    background: var(--medic-red);
+    color: white;
+}

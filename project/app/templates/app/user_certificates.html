@@ -1,0 +1,59 @@
+{% extends 'app/profile_base.html' %}
+{% load static %}
+
+{% block menu_certificates %}active{% endblock %}
+
+{% block profile_content %}
+<link rel="stylesheet" href="{% static 'app/css/user_certificates.css' %}">
+
+<section class="hero-banner">
+    <div class="hero-text">
+        <h1><b>Certificatele mele</b></h1>
+        <p>Aici găsești toate dovezile succesului tău academic.</p>
+    </div>
+</section>
+
+<div class="cert-toolbar">
+    <div class="search-box">
+        <input type="text" placeholder="Caută certificat..." class="input-search">
+        <span class="icon-search">🔍︎</span>
+    </div>
+    <div class="controls-group">
+        <select class="select-year">
+            <option value="">An obținere</option>
+            <option value="2026">2026</option>
+            <option value="2025">2025</option>
+        </select>
+    </div>
+</div>
+
+<div class="certificates-grid">
+    <div class="cert-card">
+        <div class="cert-preview">
+            <img src="https://placehold.co/400x300/e0f4f6/008ba3?text=Certificat+EMC" alt="Preview Certificat">
+            <div class="points-badge">12 Puncte</div>
+        </div>
+        <div class="cert-info">
+            <h3>Managementul Urgențelor Medicale</h3>
+            <p class="cert-date">Eliberat la: 15.02.2026</p>
+            <div class="cert-actions">
+                <a href="#" class="btn-download-main">Descarcă PDF</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="cert-card">
+        <div class="cert-preview">
+            <img src="https://placehold.co/400x300/fce4e4/e63946?text=Certificat+EMC" alt="Preview Certificat">
+            <div class="points-badge">8 Puncte</div>
+        </div>
+        <div class="cert-info">
+            <h3>Cardiologie Clinică: Noi Perspective</h3>
+            <p class="cert-date">Eliberat la: 10.01.2026</p>
+            <div class="cert-actions">
+                <a href="#" class="btn-download-main">Descarcă PDF</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

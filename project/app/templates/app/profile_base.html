@@ -3,12 +3,13 @@
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'app/css/profile_base.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <div class="profile-container">
     <aside class="sidebar">
         <div class="user-card">
             <div class="avatar-circle">
-                <i class="user-icon"></i>
+                <i class="fas fa-user-circle"></i>
             </div>
             <h3 class="user-name">Lionel Messi</h3>
             <p class="points-text">Ai acumulat <br> <span>20 puncte</span></p>
@@ -21,9 +22,9 @@
             <li class="{% block menu_events %}{% endblock %}"><a href="{% url 'user_events' %}">Evenimentele mele</a></li>
             <li class="{% block menu_magazines %}{% endblock %}"><a href="{% url 'user_magazines' %}">Revistele mele</a></li>
             <li class="{% block menu_edit %}{% endblock %}"><a href="{% url 'user_edit_profile' %}">Editeaza profil</a></li>
-            <li class="{% block menu_history %}{% endblock %}"><a href="#">Istoric tranzactii</a></li>
-            <li class="{% block menu_certificates %}{% endblock %}"><a href="#">Certificatele mele</a></li>
-            <li class="{% block menu_credits %}{% endblock %}"><a href="#">Adauga credite</a></li>
+            <li class="{% block menu_history %}{% endblock %}"><a href="{% url 'user_transactions' %}">Istoric tranzactii</a></li>
+            <li class="{% block menu_certificates %}{% endblock %}"><a href="{% url 'user_certificates' %}">Certificatele mele</a></li>
+            <li class="{% block menu_credits %}{% endblock %}"><a href="{% url 'user_add_credits' %}">Adauga credite</a></li>
         </ul>
     </aside>
 

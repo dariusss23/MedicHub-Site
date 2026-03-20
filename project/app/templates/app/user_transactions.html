@@ -1,0 +1,91 @@
+{% extends 'app/profile_base.html' %}
+{% load static %}
+
+{% block menu_history %}active{% endblock %}
+
+{% block profile_content %}
+<link rel="stylesheet" href="{% static 'app/css/user_transactions.css' %}">
+
+<section class="hero-banner">
+    <div class="hero-text">
+        <h1><b>Istoric Tranzacții</b></h1>
+        <p>Gestionează plățile și facturile tale MedicHub.</p>
+    </div>
+</section>
+
+<div class="transaction-summary">
+    <div class="summary-item">
+        <p>Total cheltuit (2026)</p>
+        <h3>570.00 RON</h3>
+    </div>
+    <div class="summary-divider"></div>
+    <div class="summary-item">
+        <p>Tranzacții active</p>
+        <h3>2</h3>
+    </div>
+</div>
+
+<div class="transactions-container">
+    <div class="receipt-card">
+        <div class="receipt-header">
+            <span class="category-tag">REVISTĂ</span>
+            <span class="status-indicator success">Finalizat</span>
+        </div>
+        
+        <div class="receipt-body">
+            <h3>Abonament Combo: Medic.ro + Ginecologia.ro</h3>
+            <p class="transaction-id">ID: #MH-2026-9981</p>
+            <div class="receipt-details">
+                <div class="detail">
+                    <span>Data:</span>
+                    <strong>06 Martie 2026</strong>
+                </div>
+                <div class="detail">
+                    <span>Metodă:</span>
+                    <strong>Card Bancar (**** 4421)</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="receipt-footer">
+            <div class="amount-area">
+                <p>Suma Plătită</p>
+                <h2 class="total-price">450.00 RON</h2>
+            </div>
+            <a href="#" class="download-btn" title="Descarcă factura PDF">
+                <span class="icon">📄</span> Factură
+            </a>
+        </div>
+    </div>
+
+    <div class="receipt-card">
+        <div class="receipt-header">
+            <span class="category-tag">CURS</span>
+            <span class="status-indicator pending">În procesare</span>
+        </div>
+        
+        <div class="receipt-body">
+            <h3>Managementul Urgențelor Medicale - Modul I</h3>
+            <p class="transaction-id">ID: #MH-2026-8842</p>
+            <div class="receipt-details">
+                <div class="detail">
+                    <span>Data:</span>
+                    <strong>15 Februarie 2026</strong>
+                </div>
+                <div class="detail">
+                    <span>Metodă:</span>
+                    <strong>Transfer Bancar</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="receipt-footer">
+            <div class="amount-area">
+                <p>Suma Plătită</p>
+                <h2 class="total-price">120.00 RON</h2>
+            </div>
+            <span class="no-invoice">Factura va fi disponibilă după confirmare</span>
+        </div>
+    </div>
+</div>
+{% endblock %}

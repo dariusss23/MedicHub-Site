@@ -27,58 +27,49 @@
     overflow: hidden;
 }
 
-/* Tab styling */
-/* Containerul tab-urilor */
 .tab-header {
     display: flex;
-    gap: 8px; /* Spațiu mic între tab-uri, ca să nu pară înghesuite */
+    gap: 8px;
     background: transparent;
     padding-left: 10px;
-    margin-bottom: -1px; /* Le "lipim" de containerul de mai jos */
+    margin-bottom: -1px;
     position: relative;
     z-index: 2;
 }
 
-/* Stilul de Tab (nu de buton clasic) */
 .tab-btn {
     border: 1px solid #eee;
-    border-bottom: none; /* Scoatem linia de jos ca să se unească cu panoul */
+    border-bottom: none;
     background: #ffffff;
     color: #444;
     padding: 14px 28px;
     font-size: 15px;
     font-weight: 700;
     cursor: pointer;
-    
-    /* Rotunjim doar colțurile de sus, exact ca în screenshot-uri */
     border-radius: 12px 12px 0 0; 
-    
     transition: all 0.25s ease;
-    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.03); /* Umbră fină în sus */
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.08);
     outline: none;
 }
 
-/* Efectul de Hover (Hover Feedback) */
 .tab-btn:hover:not(.active) {
-    background: #f0f8f9; /* Un turcoaz extrem de pal */
+    background: #f0f8f9;
     color: var(--medic-teal);
-    transform: translateY(-3px); /* Se ridică puțin când pui mouse-ul - arată că e clickabil */
+    transform: translateY(-3px);
 }
 
-/* Stilul pentru Tab-ul Activ */
 .tab-btn.active {
     background: var(--medic-teal);
     color: white;
     border-color: var(--medic-teal);
     box-shadow: 0 -5px 15px rgba(0, 139, 163, 0.2);
-    transform: translateY(-2px); /* Rămâne puțin ridicat */
+    transform: translateY(-2px);
 }
 
-/* Panoul de conținut (cel de sub tab-uri) */
 .edit-form {
     background: white;
     border: 1px solid #eee;
-    border-radius: 0 12px 12px 12px; /* Rotunjim tot, mai puțin colțul de sus-stânga unde e primul tab */
+    border-radius: 0 12px 12px 12px;
     padding: 30px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     position: relative;
