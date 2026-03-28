@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-6y8awobb#5tnym(zrpsb%=oc)k8i(rz0tg5)20(b)m*b=_xkt7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['medichub-site.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
