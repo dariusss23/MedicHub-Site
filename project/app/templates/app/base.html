@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}MedicHub Profil{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'app/css/base.css' %}" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
@@ -18,8 +19,14 @@
                 <li><a href="#">Abonamente</a></li>
                 <li><a href="#">Cursuri</a></li>
                 <li><a href="#">Evenimente</a></li>
-                <li><a href="#">Servicii digitale</a></li>
-                <li><a href="#">Contact</a></li>
+                
+                        
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}" style="color: red;">Logout ({{ user.username }})</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}" style="font-weight: bold; color: #008080;">Login</a></li>
+                {% endif %}
+
             </ul>
         </nav>
     </header>

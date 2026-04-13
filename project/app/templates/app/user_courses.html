@@ -9,79 +9,75 @@
 <section class="hero-banner">
     <div class="hero-text">
         <h1><b>Cursurile mele</b></h1>
-        <p>Progresul tau academic la zi.</p>
+        <p>Progresul tău academic la zi</p>
     </div>
 </section>
 
 <div class="courses-container">
-    <div class="course-row">
-        <div class="course-img" style="background-image: url('https://placehold.co/150x150/008ba3/ffffff?text=MED');">
-            <span class="badge-credits">12 Puncte</span>
-        </div>
+    {% if user.is_authenticated %}
+        
+        {% if user_courses %}
+            {% for item in user_courses %}
+            <div class="course-row">
+                <div class="course-img" style="background-image: url('https://placehold.co/150x150/008ba3/ffffff?text=MED');">
+                    <span class="badge-credits">{{ item.course.number_credits }} Puncte</span>
+                </div>
 
-        <div class="course-body">
-            <div class="course-top">
-                <div class="title-area">
-                    <h3>Profilaxia tromboembolismului venos și importanța acesteia în chirurgia ortopedică</h3>
-                    <p class="validity"><b>Valabilitate: 01.08.2025 - 31.07.2026</b></p>
-                </div>
-                <div class="download-container">
-                    <a href="#" class="download-icon-link" title="Descarcă certificat">
-                        <div class="download-circle">⬇</div>
-                        <span>Certificat</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="course-mid">
-                <div class="rating-stars">
-                    <span class="rating-val">4.8</span>
-                    <span class="stars">★★★★<span class="star-dim">★</span></span>
-                </div>
-                <div class="prog-section">
-                    <div class="prog-wrapper">
-                        <div class="prog-fill" style="width: 100%; background-color: green;"></div>
+                <div class="course-body">
+                    <div class="course-top">
+                        <div class="title-area">
+                            <h3>{{ item.course.name }}</h3>
+                            <p class="validity">Valabilitate: {{ item.course.date_start|date:"d.m.Y" }} - {{ item.course.date_end|date:"d.m.Y" }}</p>
+                        </div>
+                        
+                        {% if item.progress == 100 %}
+                        <div class="download-container">
+                            <a href="#" class="download-icon-link" title="Descarcă certificat">
+                                <div class="download-circle">⬇</div>
+                                <span>Certificat</span>
+                            </a>
+                        </div>
+                        {% endif %}
                     </div>
-                    <span class="prog-percent" style="color: green;">100%</span>
-                </div>
-            </div>
 
-            <div class="course-bottom">
-                <button class="btn-go">Vezi curs</button>
-            </div>
-        </div>
-    </div>
+                    <div class="course-mid">
+                        <div class="rating-stars">
+                            <span class="rating-val">{{ item.course.rating }}</span>
+                            <span class="stars">★★★★<span class="star-dim">★</span></span>
+                        </div>
 
-    <div class="course-row">
-        <div class="course-img" style="background-image: url('https://placehold.co/150x150/008ba3/ffffff?text=MED');">
-            <span class="badge-credits">6 Puncte</span>
-        </div>
-
-        <div class="course-body">
-            <div class="course-top">
-                <div class="title-area">
-                    <h3>O soluţie pentru pacienţii cu DZ tip 2 inadecvat controlaţi cu insulină bazală generația I</h3>
-                    <p class="validity"><b>Valabilitate: 01.01.2025 - 31.10.2026</b></p>
-                </div>
-            </div>
-
-            <div class="course-mid">
-                <div class="rating-stars">
-                    <span class="rating-val">3.5</span>
-                    <span class="stars">★★★<span class="star-dim">★★</span></span>
-                </div>
-                <div class="prog-section">
-                    <div class="prog-wrapper">
-                        <div class="prog-fill" style="width: 70%; background-color: #e63946;"></div>
+                        <div class="prog-section">
+                            <div class="prog-wrapper">
+                                <div class="prog-fill" style="width: {{ item.progress }}%; background-color: {% if item.progress == 100 %}green{% else %}#e63946{% endif %};">
+                                </div>
+                            </div>
+                            <span class="prog-percent" style="color: {% if item.progress == 100 %}green{% else %}#e63946{% endif %};">
+                                {{ item.progress }}%
+                            </span>
+                        </div>
                     </div>
-                    <span class="prog-percent" style="color: #e63946;">70%</span>
+
+                    <div class="course-bottom">
+                        <button class="btn-go">
+                            {% if item.progress == 100 %}Revedeți cursul{% else %}Continuă cursul{% endif %}
+                        </button>
+                    </div>
                 </div>
             </div>
+            {% endfor %}
 
-            <div class="course-bottom">
-                <button class="btn-go">Vezi curs</button>
+        {% else %}
+            {# CAZUL 2: Logat + Fără cursuri #}
+            <div class="no-data">
+                <p>Momentan nu ești înscris la niciun curs.</p>
             </div>
+        {% endif %}
+
+    {% else %}
+        <div class="no-data">
+            <div class="empty-icon">📚</div> <p>Momentan nu ești înscris la niciun curs.</p>
+            <span>Toate cursurile tale finalizate sau în curs vor apărea aici.</span>
         </div>
-    </div>
+    {% endif %}
 </div>
 {% endblock %}

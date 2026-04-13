@@ -15,16 +15,16 @@
 
 <div class="events-toolbar">
     <div class="search-box">
-        <input type="text" placeholder="Istoric participări..." class="input-search">
+        <input type="text" id="eventSearch" placeholder="Istoric participări..." class="input-search">
         <span class="icon-search">🔍︎</span>
     </div>
 
     <div class="controls-group">
-        <select class="select-year">
+        <select class="select-year" id="yearFilter">
             <option value="">An participare</option>
-            <option value="2026">2026</option>
-            <option value="2025">2025</option>
-            <option value="2024">2024</option>
+            {% for year_date in years %}
+                <option value="{{ year_date|date:'Y' }}">{{ year_date|date:'Y' }}</option>
+            {% endfor %}
         </select>
 
         <button class="btn-calendar">
@@ -34,50 +34,68 @@
 </div>
 
 <div class="events-container">
-    <div class="event-row">
-        <div class="event-date-box">
-            <span class="day">24</span>
-            <span class="month">MAR</span>
-        </div>
-        
-        <div class="event-body">
-            <div class="event-main-info">
-                <div class="event-meta">
-                    <span class="event-tag">Online</span>
-                    <span class="event-points">12 Puncte EMC</span>
+    {% if user.is_authenticated %}
+        {% if user_events %}
+            {% for item in user_events %}
+            <div class="event-row">
+                <div class="event-date-box">
+                    <span class="day">{{ item.event.event_date|date:"d" }}</span>
+                    <span class="month">{{ item.event.event_date|date:"M"|upper }}</span>
                 </div>
-                <h3>Congresul Național de Cardiologie - Ediția XIV</h3>
-                <p class="event-location">Platforma Virtuală MedicHub</p>
+                
+                <div class="event-body">
+                    <div class="event-main-info">
+                        <div class="event-meta">
+                            <span class="event-tag {% if item.event.delivery_mode == 'physical' %}physical{% endif %}">
+                                {{ item.event.get_delivery_mode_display }}
+                            </span>
+                            <span class="event-points">{{ item.event.emc_points }} Puncte EMC</span>
+                        </div>
+                        <h3>{{ item.event.name }}</h3>
+                        <p class="event-location">{{ item.event.location }}</p>
+                    </div>
+                    
+                    <div class="event-action">
+                        <button class="btn-event-details">Detalii</button>
+                    </div>
+                </div>
             </div>
-            
-            <div class="event-action">
-                <span class="status-badge confirmed">Înscris</span>
-                <button class="btn-event-details">Detalii</button>
-            </div>
-        </div>
-    </div>
+            {% endfor %}
 
-    <div class="event-row">
-        <div class="event-date-box">
-            <span class="day">12</span>
-            <span class="month">APR</span>
-        </div>
-        
-        <div class="event-body">
-            <div class="event-main-info">
-                <div class="event-meta">
-                    <span class="event-tag physical">Fizic</span>
-                    <span class="event-points">8 Puncte EMC</span>
-                </div>
-                <h3>Workshop: Tehnici Avansate în Chirurgia Ortopedică</h3>
-                <p class="event-location">Hotel Caro, București</p>
+        {% else %}
+            <div class="no-data">
+                <div class="empty-icon">📅</div>
+                <p>Momentan nu ești înscris la niciun eveniment.</p>
+                <span>Calendarul tău de participări va apărea aici după ce te înscrii la un eveniment nou.</span>
             </div>
-            
-            <div class="event-action">
-                <span class="status-badge pending">Așteptare</span>
-                <button class="btn-event-details">Detalii</button>
-            </div>
+        {% endif %}
+
+    {% else %}
+        <div class="no-data">
+            <p>Trebuie să fii autentificat pentru a vizualiza evenimentele tale.</p>
+            <a href="{% url 'login' %}" class="btn-calendar" style="text-decoration: none; margin-top: 15px;">
+                Mergi la Login
+            </a>
         </div>
-    </div>
+    {% endif %}
 </div>
+
+<script>
+    document.getElementById('eventSearch').addEventListener('keyup', function() {
+        var filter = this.value.toLowerCase();
+        var rows = document.querySelectorAll('.event-row');
+
+        rows.forEach(function(row) {
+            var title = row.querySelector('h3').textContent.toLowerCase();
+            var location = row.querySelector('.event-location').textContent.toLowerCase();
+
+            if (title.indexOf(filter) > -1 || location.indexOf(filter) > -1) {
+                row.style.display = ""; 
+            } else {
+                row.style.display = "none"; 
+            }
+        });
+    });
+</script>
+
 {% endblock %}

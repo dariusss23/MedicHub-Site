@@ -1,5 +1,15 @@
 from django.contrib import admin
 
-from .models import Locatie
+# import all models
 
-admin.site.register(Locatie)
+import app.models as models
+
+admin.site.register(models.Course)
+admin.site.register(models.UserCourse)
+admin.site.register(models.Event)
+admin.site.register(models.UserEvent)
+admin.site.register(models.Magazine)
+admin.site.register(models.UserMagazine)
+admin.site.register(models.Transaction)
+admin.site.register(models.Certificate)
+admin.site.register(models.CustomUser)

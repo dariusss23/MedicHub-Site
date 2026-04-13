@@ -8,79 +8,87 @@
 
 <section class="hero-banner">
     <div class="hero-text">
-        <h1><b>Adaugă Credite EMC</b></h1>
-        <p>Înregistrează manual punctele obținute la congrese și evenimente externe.</p>
+        <h1><b>Calculator Credite EMC</b></h1>
+        <p>Arhiva personală a punctelor obținute în afara platformei.</p>
     </div>
 </section>
 
 <div class="add-credits-wrapper">
-    <div class="glass-form-card">
-        <form class="emc-form">
-            <div class="form-main-row">
-                <div class="input-field">
-                    <label>Nume Eveniment</label>
-                    <input type="text" placeholder="Ex: Congres Național de Pediatrie">
-                </div>
-                <div class="input-field">
-                    <label>Organizator</label>
-                    <input type="text" placeholder="Ex: Colegiul Medicilor">
-                </div>
+    
+    <div class="calculator-dashboard">
+        <div class="glass-form-card">
+            <div class="card-header">
+                <h3> Adaugă Activitate Nouă</h3>
             </div>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-grid">
+                    <div class="input-field full-width">
+                        <label>Denumire Activitate</label>
+                        <input type="text" name="title" placeholder="Ex: Congresul Național de Cardiologie..." required>
+                    </div>
+                    <div class="input-field">
+                        <label>Tip Activitate</label>
+                        <select name="type">
+                            <option value="external">Eveniment Extern</option>
+                            <option value="magazine">Revistă de specialitate</option>
+                        </select>
+                    </div>
+                    <div class="input-field">
+                        <label>Puncte</label>
+                        <input type="number" name="score" placeholder="0" required>
+                    </div>
+                    <div class="input-field">
+                        <label>An</label>
+                        <input type="number" name="year" value="2026" required>
+                    </div>
+                    <div class="action-field">
+                        <button type="submit" class="btn-submit-emc">Adaugă în portofoliu</button>
+                    </div>
+                </div>
+            </form>
+        </div>
 
-            <div class="form-footer-row">
-                <div class="input-field small">
-                    <label>Credite</label>
-                    <input type="number" placeholder="0">
-                </div>
-                <div class="input-field small">
-                    <label>Anul</label>
-                    <select>
-                        <option>2026</option>
-                        <option>2025</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn-submit-emc">Adaugă Credite</button>
-            </div>
-            <p class="disclaimer-text">MedicHub nu este responsabil de corectitudinea informațiilor introduse manual.</p>
-        </form>
+        <div class="total-credits-card">
+            <p>Bilanț Credite Manuale</p>
+            <div class="big-score">{{ total_manual }}</div>
+            <span>Puncte acumulate</span>
+        </div>
     </div>
 
-    <div class="credits-history">
+    <div class="history-section">
         <div class="history-header">
-            <h3>Credite înregistrate</h3>
-            <span class="total-badge">Total: 40 Puncte</span>
+            <h2>Istoric înregistrări</h2>
         </div>
 
         <div class="emc-list">
-            <div class="emc-item">
-                <div class="emc-score">
-                    <strong>20</strong>
-                    <span>EMC</span>
+            {% if manual_credits %}
+                {% for credit in manual_credits %}
+                <div class="emc-row">
+                    <div class="type-indicator {{ credit.credit_type }}"></div>
+                    <div class="emc-main-info">
+                        <span class="type-text">{{ credit.get_credit_type_display }}</span>
+                        <h4>{{ credit.title }}</h4>
+                        <p>Anul obținerii: {{ credit.year }}</p>
+                    </div>
+                    <div class="emc-value">
+                        <strong>+{{ credit.score }}</strong>
+                        <span>puncte</span>
+                    </div>
+                    <div class="emc-actions">
+                        <a href="{% url 'delete_credit' credit.id %}" class="btn-delete-minimal" onclick="return confirm('Ștergi această înregistrare?')">
+                            <span class="icon">🗑️</span>
+                        </a>
+                    </div>
                 </div>
-                <div class="emc-info">
-                    <span class="type-tag magazine">REVISTĂ</span>
-                    <h4>Abonament reviste: Medic.ro, Ginecologia.ro</h4>
-                    <span class="emc-year">Sesiunea 2026</span>
+                {% endfor %}
+            {% else %}
+                <div class="no-data-mini">
+                    <div class="empty-icon">📊</div>
+                    <p>Nu ai adăugat încă nicio activitate.</p>
+                    <span>Punctele introduse aici sunt păstrate separat de cursurile online.</span>
                 </div>
-                <div class="emc-status">
-                    <span class="check-icon-verify">✓</span>
-                </div>
-            </div>
-
-            <div class="emc-item">
-                <div class="emc-score">
-                    <strong>10</strong>
-                    <span>EMC</span>
-                </div>
-                <div class="emc-info">
-                    <span class="type-tag external">EXTERN</span>
-                    <h4>Eveniment Test - Workshop Chirurgie</h4>
-                    <span class="emc-year">Sesiunea 2025</span>
-                </div>
-                <div class="emc-status">
-                    <span class="check-icon-wait">⏱︎</span>
-                </div>
-            </div>
+            {% endif %}
         </div>
     </div>
 </div>

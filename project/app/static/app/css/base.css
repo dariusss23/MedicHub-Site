@@ -90,6 +90,49 @@ main {
     padding: 20px;
 }
 
+/* Stiluri pentru butoanele din Nav */
+.meniu ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.nav-user-item i {
+    margin-right: 5px;
+    color: #008080;
+}
+
+.btn-nav-login {
+    background-color: #008080;
+    color: white !important;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-nav-login:hover {
+    background-color: #006666;
+}
+
+.btn-nav-logout {
+    background: none;
+    border: 1px solid #d63031;
+    color: #d63031;
+    padding: 5px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.9rem;
+    margin-left: 10px;
+    transition: 0.3s;
+}
+
+.btn-nav-logout:hover {
+    background-color: #d63031;
+    color: white;
+}
+
 footer {
     background-color: teal;
     color: white;

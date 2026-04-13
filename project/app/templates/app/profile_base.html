@@ -11,9 +11,9 @@
             <div class="avatar-circle">
                 <i class="fas fa-user-circle"></i>
             </div>
-            <h3 class="user-name">Lionel Messi</h3>
-            <p class="points-text">Ai acumulat <br> <span>20 puncte</span></p>
-            <button class="btn-logout">Logout</button>
+            <h3 class="user-name">{{ user.last_name }} {{ user.first_name }}</h3>
+            
+            <p class="points-text">Ai acumulat <br> <span>{{ total_points|default:"0" }} puncte</span></p>
         </div>
 
         <ul class="profile-menu">
@@ -21,10 +21,10 @@
             <li class="{% block menu_courses %}{% endblock %}"><a href="{% url 'user_courses' %}">Cursurile mele</a></li>
             <li class="{% block menu_events %}{% endblock %}"><a href="{% url 'user_events' %}">Evenimentele mele</a></li>
             <li class="{% block menu_magazines %}{% endblock %}"><a href="{% url 'user_magazines' %}">Revistele mele</a></li>
-            <li class="{% block menu_edit %}{% endblock %}"><a href="{% url 'user_edit_profile' %}">Editeaza profil</a></li>
-            <li class="{% block menu_history %}{% endblock %}"><a href="{% url 'user_transactions' %}">Istoric tranzactii</a></li>
+            <li class="{% block menu_edit %}{% endblock %}"><a href="{% url 'user_edit_profile' %}">Editează profil</a></li>
+            <li class="{% block menu_history %}{% endblock %}"><a href="{% url 'user_transactions' %}">Istoric tranzacții</a></li>
             <li class="{% block menu_certificates %}{% endblock %}"><a href="{% url 'user_certificates' %}">Certificatele mele</a></li>
-            <li class="{% block menu_credits %}{% endblock %}"><a href="{% url 'user_add_credits' %}">Adauga credite</a></li>
+            <li class="{% block menu_credits %}{% endblock %}"><a href="{% url 'user_add_credits' %}">Adaugă credite</a></li>
         </ul>
     </aside>
 

@@ -9,7 +9,7 @@
 <section class="hero-banner">
     <div class="hero-text">
         <h1><b>Contul meu</b></h1>
-        <p>Bine ai venit, Messi !</p>
+        <p>Bine ai venit, {{ request.user.first_name|default:request.user.username }}!</p> 
     </div>
 </section>
 
@@ -18,32 +18,32 @@
         <div class="stat-icon icon-blue"><span>📚</span></div>
         <div class="stat-content">
             <p class="stat-label"><b>Cursuri Active</b></p>
-            <h2 class="stat-value">5</h2>
-            <p class="stat-detail">2 in progres</p>
+            <h2 class="stat-value">{{ courses_count }}</h2>
+            <p class="stat-detail">{{ in_progress }} in progres</p>
         </div>
     </div>
     <div class="stat-card">
         <div class="stat-icon icon-purple"><span>📅</span></div>
         <div class="stat-content">
             <p class="stat-label"><b>Evenimente</b></p>
-            <h2 class="stat-value">3</h2>
-            <p class="stat-detail">Urmatorul: 15 Mar</p>
+            <h2 class="stat-value">{{ events_count }}</h2>
+            <p class="stat-detail">Inscrise in portofoliu</p>
         </div>
     </div>
     <div class="stat-card">
         <div class="stat-icon icon-green"><span>🏅</span></div>
         <div class="stat-content">
             <p class="stat-label"><b>Certificate</b></p>
-            <h2 class="stat-value">12</h2>
-            <p class="stat-detail">3 noi disponibile</p>
+            <h2 class="stat-value">{{ certs_count }}</h2>
+            <p class="stat-detail">Diplome obtinute</p>
         </div>
     </div>
     <div class="stat-card">
         <div class="stat-icon icon-orange"><span>📈</span></div>
         <div class="stat-content">
             <p class="stat-label"><b>Puncte Totale</b></p>
-            <h2 class="stat-value">20</h2>
-            <p class="stat-detail">+5 luna aceasta</p>
+            <h2 class="stat-value">{{ total_points }}</h2>
+            <p class="stat-detail">Strict din aplicatie</p>
         </div>
     </div>
 </div>
@@ -51,15 +51,15 @@
 <section class="info-cards">
     <div class="card">
         <p class="card-alert">Nu ai evenimente noi</p>
-        <button class="btn-primary">Vezi evenimentele</button>
+        <a href="{% url 'user_events' %}" class="btn-primary">Vezi evenimentele</a>
     </div>
     <div class="card">
         <p class="card-alert">Nu esti inscris la nici un eveniment</p>
-        <button class="btn-primary">Vezi evenimentele mele</button>
+        <a href="{% url 'user_events' %}" class="btn-primary">Vezi evenimentele mele</a>
     </div>
     <div class="card">
-        <p class="card-alert">Ai 1 teste de dat</p>
-        <button class="btn-primary">Vezi cursuri</button>
+        <p class="card-alert">Verifica progresul cursurilor</p>
+        <a href="{% url 'user_courses' %}" class="btn-primary">Vezi cursuri</a>
     </div>
 </section>
 {% endblock %}

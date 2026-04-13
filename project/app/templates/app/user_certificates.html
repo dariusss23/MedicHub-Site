@@ -15,45 +15,70 @@
 
 <div class="cert-toolbar">
     <div class="search-box">
-        <input type="text" placeholder="Caută certificat..." class="input-search">
+        <input type="text" id="certSearch" placeholder="Caută certificat..." class="input-search">
         <span class="icon-search">🔍︎</span>
     </div>
     <div class="controls-group">
-        <select class="select-year">
+        <select class="select-year" id="yearFilter">
             <option value="">An obținere</option>
-            <option value="2026">2026</option>
-            <option value="2025">2025</option>
+            {% for y in years %}
+                <option value="{{ y }}">{{ y }}</option>
+            {% endfor %}
         </select>
     </div>
 </div>
 
 <div class="certificates-grid">
-    <div class="cert-card">
-        <div class="cert-preview">
-            <img src="https://placehold.co/400x300/e0f4f6/008ba3?text=Certificat+EMC" alt="Preview Certificat">
-            <div class="points-badge">12 Puncte</div>
-        </div>
-        <div class="cert-info">
-            <h3>Managementul Urgențelor Medicale</h3>
-            <p class="cert-date">Eliberat la: 15.02.2026</p>
-            <div class="cert-actions">
-                <a href="#" class="btn-download-main">Descarcă PDF</a>
+    {% if certificates %}
+        {% for cert in certificates %}
+        <div class="cert-card" data-year="{{ cert.issue_date|date:'Y' }}">
+            <div class="cert-preview">
+                <img src="https://placehold.co/400x300/e0f4f6/008ba3?text={{ cert.name|urlencode }}" alt="Preview">
+                
+                {% if cert.course %}
+                    <div class="points-badge">{{ cert.course.number_credits }} Puncte</div>
+                {% endif %}
+            </div>
+            <div class="cert-info">
+                <h3>{{ cert.name }}</h3>
+                <p class="cert-date">Eliberat la: {{ cert.issue_date|date:"d.m.Y" }}</p>
+                <div class="cert-actions">
+                    <a href="#" class="btn-download-main">Descarcă PDF</a>
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class="cert-card">
-        <div class="cert-preview">
-            <img src="https://placehold.co/400x300/fce4e4/e63946?text=Certificat+EMC" alt="Preview Certificat">
-            <div class="points-badge">8 Puncte</div>
+        {% endfor %}
+    {% else %}
+        <div class="no-data" style="grid-column: 1 / -1;">
+            <div class="empty-icon">📜</div>
+            <p>Nu ai încă niciun certificat eliberat.</p>
+            <span>Finalizează cursuri pentru a primi diplomele de absolvire și punctele EMC.</span>
         </div>
-        <div class="cert-info">
-            <h3>Cardiologie Clinică: Noi Perspective</h3>
-            <p class="cert-date">Eliberat la: 10.01.2026</p>
-            <div class="cert-actions">
-                <a href="#" class="btn-download-main">Descarcă PDF</a>
-            </div>
-        </div>
-    </div>
+    {% endif %}
 </div>
+
+<script>
+    function filterCertificates() {
+        var searchVal = document.getElementById('certSearch').value.toLowerCase();
+        var yearVal = document.getElementById('yearFilter').value;
+        var cards = document.querySelectorAll('.cert-card');
+
+        cards.forEach(function(card) {
+            var title = card.querySelector('h3').textContent.toLowerCase();
+            var cardYear = card.getAttribute('data-year');
+
+            var matchesSearch = title.indexOf(searchVal) > -1;
+            var matchesYear = yearVal === "" || cardYear === yearVal;
+
+            if (matchesSearch && matchesYear) {
+                card.style.display = "";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    }
+
+    document.getElementById('certSearch').addEventListener('keyup', filterCertificates);
+    document.getElementById('yearFilter').addEventListener('change', filterCertificates);
+</script>
 {% endblock %}

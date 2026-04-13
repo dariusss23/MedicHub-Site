@@ -16,76 +16,66 @@
 <div class="transaction-summary">
     <div class="summary-item">
         <p>Total cheltuit (2026)</p>
-        <h3>570.00 RON</h3>
+        <h3>{{ total_spent }} {{ transactions.0.currency|default:"RON" }}</h3>
     </div>
     <div class="summary-divider"></div>
     <div class="summary-item">
         <p>Tranzacții active</p>
-        <h3>2</h3>
+        <h3>{{ active_count }}</h3>
     </div>
 </div>
 
 <div class="transactions-container">
-    <div class="receipt-card">
-        <div class="receipt-header">
-            <span class="category-tag">REVISTĂ</span>
-            <span class="status-indicator success">Finalizat</span>
-        </div>
-        
-        <div class="receipt-body">
-            <h3>Abonament Combo: Medic.ro + Ginecologia.ro</h3>
-            <p class="transaction-id">ID: #MH-2026-9981</p>
-            <div class="receipt-details">
-                <div class="detail">
-                    <span>Data:</span>
-                    <strong>06 Martie 2026</strong>
-                </div>
-                <div class="detail">
-                    <span>Metodă:</span>
-                    <strong>Card Bancar (**** 4421)</strong>
+    {% if transactions %}
+        {% for t in transactions %}
+        <div class="receipt-card">
+            <div class="receipt-header">
+                <span class="category-tag">{{ t.category|upper }}</span>
+                
+                <span class="status-indicator {% if t.status == 'completed' %}success{% elif t.status == 'pending' %}pending{% else %}failed{% endif %}">
+                    {{ t.get_status_display }}
+                </span>
+            </div>
+            
+            <div class="receipt-body">
+                <h3>{{ t.product_name }}</h3>
+                <p class="transaction-id">ID: {{ t.transaction_reference }}</p>
+                
+                <div class="receipt-details">
+                    <div class="detail">
+                        <span>Data:</span>
+                        <strong>{{ t.date|date:"d F Y" }}</strong>
+                    </div>
+                    <div class="detail">
+                        <span>Metodă:</span>
+                        <strong>{{ t.payment_method }}</strong>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="receipt-footer">
-            <div class="amount-area">
-                <p>Suma Plătită</p>
-                <h2 class="total-price">450.00 RON</h2>
-            </div>
-            <a href="#" class="download-btn" title="Descarcă factura PDF">
-                <span class="icon">📄</span> Factură
-            </a>
-        </div>
-    </div>
-
-    <div class="receipt-card">
-        <div class="receipt-header">
-            <span class="category-tag">CURS</span>
-            <span class="status-indicator pending">În procesare</span>
-        </div>
-        
-        <div class="receipt-body">
-            <h3>Managementul Urgențelor Medicale - Modul I</h3>
-            <p class="transaction-id">ID: #MH-2026-8842</p>
-            <div class="receipt-details">
-                <div class="detail">
-                    <span>Data:</span>
-                    <strong>15 Februarie 2026</strong>
+            <div class="receipt-footer">
+                <div class="amount-area">
+                    <p>Suma Plătită</p>
+                    <h2 class="total-price">{{ t.amount }} {{ t.currency }}</h2>
                 </div>
-                <div class="detail">
-                    <span>Metodă:</span>
-                    <strong>Transfer Bancar</strong>
-                </div>
+                
+                {% if t.status == 'completed' %}
+                    <a href="#" class="download-btn" title="Descarcă factura PDF">
+                        <span class="icon">📄</span> Factură
+                    </a>
+                {% else %}
+                    <span class="no-invoice">Factura va fi disponibilă după confirmarea plății</span>
+                {% endif %}
             </div>
         </div>
+        {% endfor %}
 
-        <div class="receipt-footer">
-            <div class="amount-area">
-                <p>Suma Plătită</p>
-                <h2 class="total-price">120.00 RON</h2>
-            </div>
-            <span class="no-invoice">Factura va fi disponibilă după confirmare</span>
+    {% else %}
+        <div class="no-data" style="grid-column: 1 / -1;">
+            <div class="empty-icon">💸</div>
+            <p>Momentan nu ai nicio tranzacție înregistrată.</p>
+            <span>Istoricul achizițiilor tale pentru cursuri și reviste va apărea aici.</span>
         </div>
-    </div>
+    {% endif %}
 </div>
 {% endblock %}

@@ -15,66 +15,86 @@
 
 <div class="magazines-toolbar">
     <div class="search-box">
-        <input type="text" placeholder="Caută în publicații..." class="input-search">
+        <input type="text" id="magSearch" placeholder="Caută în publicații..." class="input-search">
         <span class="icon-search">🔍︎</span>
     </div>
 
     <div class="controls-group">
-        <select class="select-filter">
-            <option value="">Specialitate</option>
-            <option value="ginecologie">Ginecologie</option>
-            <option value="cardiologie">Cardiologie</option>
+        <select class="select-filter" id="categoryFilter">
+            <option value="">Categorie</option>
+            {% for cat in categories %}
+                <option value="{{ cat|lower }}">{{ cat }}</option>
+            {% endfor %}
         </select>
 
-        <select class="select-year">
+        <select class="select-year" id="yearFilter">
             <option value="">An</option>
-            <option value="2026">2026</option>
-            <option value="2025">2025</option>
+            {% for y in years %}
+                <option value="{{ y }}">{{ y }}</option>
+            {% endfor %}
         </select>
     </div>
 </div>
 
 <div class="magazines-grid">
-    <div class="magazine-card">
-        <div class="magazine-cover">
-            <img src="https://placehold.co/300x400/008ba3/ffffff?text=Ginecologia.ro" alt="Cover">
-            <div class="cover-overlay">
-                <button class="btn-read">Citește Online</button>
+    {% if magazines %}
+        {% for mag in magazines %}
+        <div class="magazine-card" data-category="{{ mag.category|lower }}" data-year="{{ mag.edition_year }}">
+            <div class="magazine-cover">
+                <img src="https://placehold.co/300x400/008ba3/ffffff?text={{ mag.title|urlencode }}" alt="Cover">
+                <div class="cover-overlay">
+                    <button class="btn-read">Citește Online</button>
+                </div>
+            </div>
+            <div class="magazine-info">
+                <span class="mag-tag">{{ mag.category }}</span>
+                <h3>{{ mag.title }}</h3>
+                <p class="mag-issue">Ediția nr. {{ mag.edition_number }} / {{ mag.edition_year }}</p>
+                <p class="mag-date">{{ mag.publication_date|date:"d F Y" }}</p>
+                
+                <div class="mag-actions">
+                    <a href="#" class="btn-pdf">
+                        <span>Descarcă PDF</span> 
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="magazine-info">
-            <span class="mag-tag">Ginecologie</span>
-            <h3>Ginecologia.ro</h3>
-            <p class="mag-issue">Ediția nr. 4 / 2025</p>
-            <p class="mag-date">11 Decembrie 2025</p>
-            
-            <div class="mag-actions">
-                <a href="#" class="btn-pdf">
-                    <span>Descarcă PDF</span> 
-                </a>
-            </div>
+        {% endfor %}
+    {% else %}
+        <div class="no-data" style="grid-column: 1 / -1;">
+            <div class="empty-icon">📚</div>
+            <p>Momentan nu ești înscris la nicio revistă.</p>
+            <span>Toate publicațiile tale de specialitate vor apărea aici.</span>
         </div>
-    </div>
-
-    <div class="magazine-card">
-        <div class="magazine-cover">
-            <img src="https://placehold.co/300x400/2f55d4/ffffff?text=Pediatria" alt="Cover">
-            <div class="cover-overlay">
-                <button class="btn-read">Citește Online</button>
-            </div>
-        </div>
-        <div class="magazine-info">
-            <span class="mag-tag blue">Pediatrie</span>
-            <h3>Pediatria</h3>
-            <p class="mag-issue">Ediția nr. 2 / 2025</p>
-            <p class="mag-date">15 Iunie 2025</p>
-            
-            <div class="mag-actions">
-                <a href="#" class="btn-pdf">
-                    <span>Descarcă PDF</span> 
-                </a>
-            </div>
-        </div>
-    </div>
+    {% endif %}
 </div>
+
+<script>
+    function filtrareReviste() {
+        var text = document.getElementById('magSearch').value.toLowerCase();
+        var cat = document.getElementById('categoryFilter').value;
+        var an = document.getElementById('yearFilter').value;
+        var carduri = document.querySelectorAll('.magazine-card');
+
+        carduri.forEach(function(card) {
+            var titlu = card.querySelector('h3').textContent.toLowerCase();
+            var cardCat = card.getAttribute('data-category');
+            var cardAn = card.getAttribute('data-year');
+
+            var matchesText = titlu.indexOf(text) > -1;
+            var matchesCat = cat === "" || cardCat === cat;
+            var matchesAn = an === "" || cardAn === an;
+
+            if (matchesText && matchesCat && matchesAn) {
+                card.style.display = "";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    }
+
+    document.getElementById('magSearch').addEventListener('keyup', function() { filtrareReviste(); });
+    document.getElementById('categoryFilter').addEventListener('change', function() { filtrareReviste(); });
+    document.getElementById('yearFilter').addEventListener('change', function() { filtrareReviste(); });
+</script>
 {% endblock %}

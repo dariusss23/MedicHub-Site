@@ -177,23 +177,6 @@
     gap: 10px;
 }
 
-.status-badge {
-    font-size: 15px;
-    font-weight: bold;
-    padding: 4px 12px;
-    border-radius: 20px;
-}
-
-.confirmed { 
-    background: #dcfce7; 
-    color: #15803d; 
-}
-
-.pending { 
-    background: #f3f4f6; 
-    color: #666; 
-}
-
 .btn-event-details {
     background: none;
     border: none;
@@ -202,4 +185,55 @@
     text-decoration: underline;
     cursor: pointer;
     font-size: 15px;
+}
+
+.no-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    min-height: 350px; /* Ocupă spațiu pe pagină */
+    margin: 20px 0;
+    padding: 40px;
+    
+    background: white;
+    border: 2px dashed #d1d5db;
+    border-radius: 16px;
+    
+    color: #6b7280;
+    text-align: center;
+
+    transition: all 0.3s ease;
+}
+
+.no-data:hover {
+    border-color: var(--medic-teal);
+    background: #f0fdfa;
+}
+
+.no-data .empty-icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.no-data p {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.no-data span {
+    font-size: 14px;
+    margin-top: 10px;
+    max-width: 300px;
+    line-height: 1.4;
+    opacity: 0.8;
+}
+
+/* Ajustăm butonul de login din no-data să arate ca cel de calendar */
+.no-data .btn-calendar {
+    display: inline-flex;
+    margin-top: 20px;
 }
