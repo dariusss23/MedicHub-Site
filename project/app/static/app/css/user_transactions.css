@@ -183,19 +183,18 @@
     text-align: right; 
 }
 
-/* Stilul "No Data" universal pentru MedicHub */
 .no-data {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     
-    min-height: 350px; /* Ca să ocupe spațiu generos pe pagină */
+    min-height: 350px;
     margin: 20px 0;
     padding: 40px;
     
     background: white;
-    border: 2px dashed #d1d5db; /* Bordura gri punctată */
+    border: 2px dashed #d1d5db;
     border-radius: 16px;
     
     color: #6b7280;

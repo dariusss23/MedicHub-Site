@@ -127,3 +127,41 @@
     background: var(--medic-red);
     color: white;
 }
+
+/* --- STIL UNIVERSAL NO-DATA --- */
+.no-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    grid-column: 1 / -1; /* Ocupă tot rândul în grid-ul de certificate */
+    min-height: 350px;
+    padding: 40px;
+    margin: 20px 0;
+    
+    background: white;
+    border: 2px dashed #d1d5db; /* Aceeași bordură gri punctată */
+    border-radius: 16px;
+    text-align: center;
+}
+
+.no-data .empty-icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.no-data p {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.no-data span {
+    font-size: 14px;
+    margin-top: 10px;
+    color: #6b7280;
+    max-width: 350px;
+    line-height: 1.5;
+}

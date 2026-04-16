@@ -4,35 +4,33 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .models import *
 from datetime import datetime
+from django.contrib.auth import update_session_auth_hash
+from django.utils import timezone
 
 
 def user_profile(request):
     if request.user.is_authenticated:
-        # Cursuri
+        now = timezone.now()
         user_courses = UserCourse.objects.filter(user=request.user)
-        courses_count = user_courses.count()
-        in_progress = user_courses.filter(progress__lt=100, progress__gt=0).count()
+        
+        active_courses_count = user_courses.filter(progress__gt=0, progress__lt=100).count()
+        
+        upcoming_events_count = UserEvent.objects.filter(user=request.user, event__event_date__gte=now).count()
 
-        # Evenimente
-        events_count = UserEvent.objects.filter(user=request.user).count()
-
-        # Certificate
         certs_count = Certificate.objects.filter(user=request.user).count()
 
-        # PUNCTE TOTALE (Doar din cursuri finalizate 100%)
-        # Fara ManualCredit, fara alte adunari.
         total_points = sum(uc.course.number_credits for uc in user_courses if uc.progress == 100)
         
+        context = {
+            'active_courses_count': active_courses_count,
+            'upcoming_events_count': upcoming_events_count,
+            'certs_count': certs_count,
+            'total_points': total_points,
+        }
     else:
-        courses_count = in_progress = events_count = certs_count = total_points = 0
+        context = {}
 
-    return render(request, 'app/user_profile.html', {
-        'courses_count': courses_count,
-        'in_progress': in_progress,
-        'events_count': events_count,
-        'certs_count': certs_count,
-        'total_points': total_points,
-    })
+    return render(request, 'app/user_profile.html', context)
 
 def user_courses(request):
     if request.user.is_authenticated:
@@ -78,6 +76,38 @@ def user_magazines(request):
     })
 
 def user_edit_profile(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
+    if request.method == 'POST':
+        user = request.user
+        
+        user.last_name = request.POST.get('last_name')
+        user.first_name = request.POST.get('first_name')
+        user.email = request.POST.get('email')
+        user.phone = request.POST.get('phone')
+        user.address = request.POST.get('address')
+        user.city = request.POST.get('city')
+        user.parafa_code = request.POST.get('parafa_code')
+        user.cuim = request.POST.get('cuim')
+        
+        new_password = request.POST.get('new_password')
+        current_password = request.POST.get('current_password')
+        
+        if current_password and new_password:
+            if user.check_password(current_password):
+                user.set_password(new_password)
+                user.save()
+                update_session_auth_hash(request, user)
+                messages.success(request, 'Parola a fost schimbată!')
+            else:
+                messages.error(request, 'Parola curentă este incorectă.')
+                return redirect('user_edit_profile')
+
+        user.save()
+        messages.success(request, 'Profilul a fost actualizat cu succes!')
+        return redirect('user_edit_profile')
+
     return render(request, 'app/user_edit_profile.html')
 
 
@@ -138,13 +168,12 @@ def user_add_credits(request):
             score=request.POST.get('score'),
             year=request.POST.get('year'),
             credit_type=request.POST.get('type'),
-            is_verified=True  # Setăm automat pe True ca să nu mai apară "în așteptare"
+            is_verified=True
         )
         return redirect('user_add_credits')
 
     manual_credits = ManualCredit.objects.filter(user=request.user).order_by('-created_at')
     
-    # Calculăm totalul manual
     total_manual = sum(c.score for c in manual_credits)
 
     return render(request, 'app/user_add_credits.html', {
@@ -152,7 +181,6 @@ def user_add_credits(request):
         'total_manual': total_manual
     })
 
-# FUNCȚIA NOUĂ DE ȘTERGERE
 def delete_credit(request, credit_id):
     credit = ManualCredit.objects.get(id=credit_id, user=request.user)
     credit.delete()

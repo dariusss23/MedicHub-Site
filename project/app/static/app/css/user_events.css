@@ -193,7 +193,7 @@
     align-items: center;
     justify-content: center;
     
-    min-height: 350px; /* Ocupă spațiu pe pagină */
+    min-height: 350px;
     margin: 20px 0;
     padding: 40px;
     
@@ -232,7 +232,6 @@
     opacity: 0.8;
 }
 
-/* Ajustăm butonul de login din no-data să arate ca cel de calendar */
 .no-data .btn-calendar {
     display: inline-flex;
     margin-top: 20px;

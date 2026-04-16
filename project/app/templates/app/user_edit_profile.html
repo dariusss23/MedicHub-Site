@@ -28,37 +28,29 @@
                 <div class="form-column">
                     <div class="input-group">
                         <label>Nume *</label>
-                        <input type="text" value="Lionel">
+                        <input type="text" name="last_name" value="{{ user.last_name }}">
                     </div>
                     <div class="input-group">
                         <label>Prenume *</label>
-                        <input type="text" value="Messi">
+                        <input type="text" name="first_name" value="{{ user.first_name }}">
                     </div>
                     <div class="input-group">
                         <label>Telefon *</label>
-                        <input type="text" value="0729111222">
+                        <input type="text" name="phone" value="{{ user.phone }}">
                     </div>
                     <div class="input-group">
                         <label>Email</label>
-                        <input type="email" value="lionel_GOAT_messi@gmail.com">
+                        <input type="email" name="email" value="{{ user.email }}">
                     </div>
                 </div>
                 <div class="form-column">
                     <div class="input-group">
                         <label>Adresa de corespondență *</label>
-                        <textarea rows="4">Strada Eroilor, nr. 100, bl. 690, sc. A</textarea>
+                        <textarea name="address" rows="4">{{ user.address }}</textarea>
                     </div>
                     <div class="input-group">
                         <label>Oraș</label>
-                        <select>
-                            <option>București</option>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <label>Sector</label>
-                        <select>
-                            <option>Sector 6</option>
-                        </select>
+                        <input type="text" name="city" value="{{ user.city }}">
                     </div>
                 </div>
             </div>
@@ -68,32 +60,12 @@
             <div class="form-grid">
                 <div class="form-column">
                     <div class="input-group">
-                        <label>Ocupație</label>
-                        <select><option>Medic</option></select>
-                    </div>
-                    <div class="input-group">
-                        <p class="warning-text">Atenție: Specializarea poate fi modificată o singură dată!</p>
-                        <label>Specializarea 1</label>
-                        <select><option>Ortopedie și traumatologie</option></select>
-                    </div>
-                    <div class="input-group">
-                        <label>Grad profesional</label>
-                        <select><option>Medic Primar</option></select>
-                    </div>
-                    <div class="input-group">
                         <label>Cod parafă *</label>
-                        <input type="text" value="111111">
-                    </div>
-                </div>
-                <div class="form-column">
-                    <div class="input-group">
-                        <label>Unitate medicală (Clinică)</label>
-                        <select><option>Clinica Ortomax</option></select>
-                        <a href="#" class="small-link">Click pentru a schimba</a>
+                        <input type="text" name="parafa_code" value="{{ user.parafa_code }}">
                     </div>
                     <div class="input-group">
-                        <label>CUIM (Cod unic de identificare) *</label>
-                        <input type="text" value="1111111111">
+                        <label>CUIM *</label>
+                        <input type="text" name="cuim" value="{{ user.cuim }}">
                     </div>
                 </div>
             </div>
@@ -103,56 +75,39 @@
             <div class="form-grid">
                 <div class="form-column">
                     <h3>Modificare Parolă</h3>
-                    <div class="input-group password-field">
-                        <label>Parola curentă *</label>
-                        <input type="password" placeholder="********">
+                    <div class="input-group">
+                        <label>Parola curentă</label>
+                        <input type="password" name="current_password" placeholder="********">
                     </div>
-                    <div class="input-group password-field">
-                        <label>Alege o parolă *</label>
-                        <input type="password">
-                    </div>
-                </div>
-                <div class="form-column">
-                    <h3>Notificări marketing</h3>
-                    <div class="toggle-group">
-                        <div class="toggle-item">
-                            <span>Notificări prin email</span>
-                            <label class="switch">
-                                <input type="checkbox" checked>
-                                <span class="slider"></span>
-                            </label>
-                        </div>
-                        <div class="toggle-item">
-                            <span>Notificări prin SMS</span>
-                            <label class="switch">
-                                <input type="checkbox">
-                                <span class="slider"></span>
-                            </label>
-                        </div>
+                    <div class="input-group">
+                        <label>Noua parolă</label>
+                        <input type="password" name="new_password">
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="form-footer">
-            <button type="submit" class="btn-save">Modifică</button>
+            <button type="submit" class="btn-save">Salvează modificările</button>
         </div>
     </form>
 </div>
 
 <script>
-function openTab(evt, tabName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tab-content");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].classList.remove("active");
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+            tabcontent[i].classList.remove("active");
+        }
+        tablinks = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
     }
-    tablinks = document.getElementsByClassName("tab-btn");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].classList.remove("active");
-    }
-    document.getElementById(tabName).classList.add("active");
-    evt.currentTarget.classList.add("active");
-}
 </script>
 {% endblock %}

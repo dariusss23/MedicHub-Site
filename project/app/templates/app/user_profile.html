@@ -18,48 +18,64 @@
         <div class="stat-icon icon-blue"><span>📚</span></div>
         <div class="stat-content">
             <p class="stat-label"><b>Cursuri Active</b></p>
-            <h2 class="stat-value">{{ courses_count }}</h2>
-            <p class="stat-detail">{{ in_progress }} in progres</p>
+            <h2 class="stat-value">{{ active_courses_count }}</h2>
         </div>
     </div>
+
     <div class="stat-card">
         <div class="stat-icon icon-purple"><span>📅</span></div>
         <div class="stat-content">
-            <p class="stat-label"><b>Evenimente</b></p>
-            <h2 class="stat-value">{{ events_count }}</h2>
-            <p class="stat-detail">Inscrise in portofoliu</p>
+            <p class="stat-label"><b>Evenimente Viitoare</b></p>
+            <h2 class="stat-value">{{ upcoming_events_count }}</h2>
         </div>
     </div>
+
     <div class="stat-card">
         <div class="stat-icon icon-green"><span>🏅</span></div>
         <div class="stat-content">
-            <p class="stat-label"><b>Certificate</b></p>
+            <p class="stat-label"><b>Certificate Totale</b></p>
             <h2 class="stat-value">{{ certs_count }}</h2>
-            <p class="stat-detail">Diplome obtinute</p>
         </div>
     </div>
+
     <div class="stat-card">
         <div class="stat-icon icon-orange"><span>📈</span></div>
         <div class="stat-content">
             <p class="stat-label"><b>Puncte Totale</b></p>
             <h2 class="stat-value">{{ total_points }}</h2>
-            <p class="stat-detail">Strict din aplicatie</p>
         </div>
     </div>
 </div>
 
 <section class="info-cards">
     <div class="card">
-        <p class="card-alert">Nu ai evenimente noi</p>
-        <a href="{% url 'user_events' %}" class="btn-primary">Vezi evenimentele</a>
+        {% if in_progress > 0 %}
+            <p class="card-alert">Ai cursuri în desfășurare</p>
+            <a href="{% url 'user_courses' %}" class="btn-primary">Continuă studiul</a>
+        {% else %}
+            <p class="card-alert">Explorează cursuri noi</p>
+            <a href="{% url 'user_courses' %}" class="btn-primary">Vezi oferta EMC</a>
+        {% endif %}
     </div>
+
     <div class="card">
-        <p class="card-alert">Nu esti inscris la nici un eveniment</p>
-        <a href="{% url 'user_events' %}" class="btn-primary">Vezi evenimentele mele</a>
+        {% if upcoming_events_count > 0 %}
+            <p class="card-alert">Ai {{ upcoming_events_count }} evenimente programate</p>
+            <a href="{% url 'user_events' %}" class="btn-primary">Vezi calendarul</a>
+        {% else %}
+            <p class="card-alert">Nu ai evenimente viitoare</p>
+            <a href="/evenimente/" class="btn-primary">Vezi noutățile</a>
+        {% endif %}
     </div>
+
     <div class="card">
-        <p class="card-alert">Verifica progresul cursurilor</p>
-        <a href="{% url 'user_courses' %}" class="btn-primary">Vezi cursuri</a>
+        {% if certs_count > 0 %}
+            <p class="card-alert">Ai {{ certs_count }} diplome disponibile</p>
+            <a href="{% url 'user_certificates' %}" class="btn-primary">Descarcă certificate</a>
+        {% else %}
+            <p class="card-alert">Monitorizează-ți punctele EMC</p>
+            <a href="{% url 'user_add_credits' %}" class="btn-primary">Calculator credite</a>
+        {% endif %}
     </div>
 </section>
 {% endblock %}

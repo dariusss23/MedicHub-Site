@@ -1,10 +1,8 @@
-/* --- CONFIGURARE GENERALĂ --- */
 :root {
     --medic-teal: #008ba3;
-    --medic-red: #e63946; /* Ajustează dacă ai alt cod de roșu */
+    --medic-red: #e63946;
 }
 
-/* --- HERO BANNER --- */
 .hero-banner {
     background-color: var(--medic-teal);
     border-radius: 12px;
@@ -29,7 +27,6 @@
     margin: 5px 0 0 0;
 }
 
-/* --- STATS GRID (4 coloane sus) --- */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -63,19 +60,49 @@
     font-size: 20px;
 }
 
-.icon-blue   { background-color: #eef2ff; color: #2f55d4; }
-.icon-purple { background-color: #f5f3ff; color: #8b5cf6; }
-.icon-green  { background-color: #f0fdf4; color: #10b981; }
-.icon-orange { background-color: #fff7ed; color: #f97316; }
+.icon-blue   {
+    background-color: #eef2ff;
+    color: #2f55d4;
+}
 
-.stat-label { font-size: 13px; color: #888; margin: 0; font-weight: 500; }
-.stat-value { font-size: 28px; font-weight: 700; color: #333; margin: 5px 0; }
-.stat-detail { font-size: 12px; color: #aaa; margin: 0; }
+.icon-purple {
+    background-color: #f5f3ff; 
+    color: #8b5cf6;
+}
 
-/* --- INFO CARDS (Structura ta VERTICALĂ) --- */
+.icon-green  {
+    background-color: #f0fdf4; 
+    color: #10b981;
+}
+
+.icon-orange {
+    background-color: #fff7ed;
+    color: #f97316; 
+}
+
+.stat-label {
+    font-size: 13px;
+    color: #888;
+    margin: 0;
+    font-weight: 500;
+}
+
+.stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin: 5px 0;
+}
+
+.stat-detail {
+    font-size: 12px;
+    color: #aaa;
+    margin: 0;
+}
+
 .info-cards {
     display: grid;
-    grid-template-columns: 1fr; /* Forțăm o singură coloană (vertical) */
+    grid-template-columns: 1fr;
     gap: 20px;
 }
 
@@ -97,21 +124,19 @@
     font-size: 16px;
 }
 
-/* --- BUTONUL UNIFORMIZAT (Fix-ul cerut) --- */
 .btn-primary {
     background-color: var(--medic-red);
-    color: white !important; /* Forțăm culoarea albă */
+    color: white !important;
     border: none;
     padding: 12px 20px;
     border-radius: 5px;
     cursor: pointer;
     
-    /* Aliniere și eliminare underscore */
-    text-decoration: none !important; /* SCOATE SUB-LINIEREA */
-    display: inline-block;           /* Permite lățime fixă */
-    width: 220px;                    /* TOATE BUTOANELE VOR FI EGALE */
-    text-align: center;              /* Centrează textul în buton */
-    align-self: flex-start;          /* Le aliniază pe toate la stânga cardului */
+    text-decoration: none !important;
+    display: inline-block;
+    width: 220px;
+    text-align: center;
+    align-self: flex-start;
     
     font-size: 13px;
     font-weight: 700;
@@ -129,13 +154,22 @@
     transform: scale(0.98);
 }
 
-/* Responsivitate pentru ecrane mici */
 @media (max-width: 1024px) {
-    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 600px) {
-    .stats-grid { grid-template-columns: 1fr; }
-    .hero-text h1 { font-size: 32px; }
-    .btn-primary { width: 100%; } /* Pe mobil le facem late cât ecranul */
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-text h1 {
+        font-size: 32px;
+    }
+
+    .btn-primary {
+        width: 100%;
+    }
 }
