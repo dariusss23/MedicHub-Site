@@ -6,26 +6,30 @@ from .models import *
 from datetime import datetime
 from django.contrib.auth import update_session_auth_hash
 from django.utils import timezone
+from django.template.loader import render_to_string
+from django.shortcuts import get_object_or_404
+from weasyprint import HTML
+import tempfile
+from django.utils import translation
 
 
 def user_profile(request):
     if request.user.is_authenticated:
         now = timezone.now()
         user_courses = UserCourse.objects.filter(user=request.user)
-        
-        active_courses_count = user_courses.filter(progress__gt=0, progress__lt=100).count()
-        
-        upcoming_events_count = UserEvent.objects.filter(user=request.user, event__event_date__gte=now).count()
+    
+        recent_courses = user_courses.filter(progress__gt=0, progress__lt=100)[:2]
+        next_events = UserEvent.objects.filter(user=request.user, event__event_date__gte=now).order_by('event__event_date')[:2]
+        latest_certificates = Certificate.objects.filter(user=request.user).order_by('-issue_date')[:2]
 
-        certs_count = Certificate.objects.filter(user=request.user).count()
-
-        total_points = sum(uc.course.number_credits for uc in user_courses if uc.progress == 100)
-        
         context = {
-            'active_courses_count': active_courses_count,
-            'upcoming_events_count': upcoming_events_count,
-            'certs_count': certs_count,
-            'total_points': total_points,
+            'active_courses_count': user_courses.filter(progress__gt=0, progress__lt=100).count(),
+            'upcoming_events_count': next_events.count(),
+            'certs_count': Certificate.objects.filter(user=request.user).count(),
+            'total_points': sum(uc.course.number_credits for uc in user_courses if uc.progress == 100),
+            'recent_courses': recent_courses,
+            'next_events': next_events,
+            'latest_certificates': latest_certificates,
         }
     else:
         context = {}
@@ -203,3 +207,27 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('user_profile')
+
+def export_certificate_pdf(request, cert_id):
+    translation.activate('ro')
+    
+    certificat = get_object_or_404(Certificate, certificate_id=cert_id, user=request.user)
+
+    context = {
+        'cert': certificat,  
+        'user': request.user,
+    }
+
+    html_string = render_to_string('app/pdf/certificate_template.html', context)
+    
+    html = HTML(string=html_string, base_url=request.build_absolute_uri())
+    result = html.write_pdf()
+
+    response = HttpResponse(content_type='application/pdf')
+    filename = f"Certificat_{certificat.certificate_id}.pdf"
+    response['Content-Disposition'] = f'attachment; filename="{filename}"'
+    response.write(result)
+    
+    translation.deactivate()
+    
+    return response

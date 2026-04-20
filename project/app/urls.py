@@ -14,4 +14,5 @@ urlpatterns = [
     path("login/", views.login_view, name="login"),
     path("logout/", views.logout_view, name="logout"),
     path('profile/add-credits/delete/<int:credit_id>/', views.delete_credit, name='delete_credit'),
+    path('certificate/download/<int:cert_id>/', views.export_certificate_pdf, name='download_cert_pdf'),
 ]

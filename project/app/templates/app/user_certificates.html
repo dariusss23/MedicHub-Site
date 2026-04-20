@@ -43,7 +43,7 @@
                 <h3>{{ cert.name }}</h3>
                 <p class="cert-date">Eliberat la: {{ cert.issue_date|date:"d.m.Y" }}</p>
                 <div class="cert-actions">
-                    <a href="#" class="btn-download-main">Descarcă PDF</a>
+                    <a href="{% url 'download_cert_pdf' cert.certificate_id %}" class="btn-download-main">Descarcă PDF</a>
                 </div>
             </div>
         </div>

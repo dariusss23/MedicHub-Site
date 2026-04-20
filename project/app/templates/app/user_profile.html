@@ -47,35 +47,70 @@
     </div>
 </div>
 
-<section class="info-cards">
-    <div class="card">
-        {% if in_progress > 0 %}
-            <p class="card-alert">Ai cursuri în desfășurare</p>
-            <a href="{% url 'user_courses' %}" class="btn-primary">Continuă studiul</a>
-        {% else %}
-            <p class="card-alert">Explorează cursuri noi</p>
-            <a href="{% url 'user_courses' %}" class="btn-primary">Vezi oferta EMC</a>
-        {% endif %}
+<section class="summary-section">
+    <div class="summary-card">
+        <div class="summary-header">
+            <h3>📚 Cursuri în desfășurare</h3>
+            <a href="{% url 'user_courses' %}" class="view-all">Vezi tot</a>
+        </div>
+        <div class="summary-list">
+            {% for uc in recent_courses %}
+            <div class="summary-item">
+                <div class="item-info">
+                    <span class="item-name">{{ uc.course.name }}</span>
+                    <span class="item-meta">{{ uc.progress }}% finalizat</span>
+                </div>
+                <div class="progress-container-mini">
+                    <div class="progress-bar-mini" style="width: {{ uc.progress }}%"></div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="empty-text">Nu ai cursuri active. <a href="{% url 'user_courses' %}">Începe unul acum.</a></p>
+            {% endfor %}
+        </div>
     </div>
 
-    <div class="card">
-        {% if upcoming_events_count > 0 %}
-            <p class="card-alert">Ai {{ upcoming_events_count }} evenimente programate</p>
-            <a href="{% url 'user_events' %}" class="btn-primary">Vezi calendarul</a>
-        {% else %}
-            <p class="card-alert">Nu ai evenimente viitoare</p>
-            <a href="/evenimente/" class="btn-primary">Vezi noutățile</a>
-        {% endif %}
+    <div class="summary-card">
+        <div class="summary-header">
+            <h3>📅 Calendar Evenimente</h3>
+            <a href="{% url 'user_events' %}" class="view-all">Vezi tot</a>
+        </div>
+        <div class="summary-list">
+            {% for ue in next_events %}
+            <div class="summary-item">
+                <div class="item-date">
+                    <span class="day">{{ ue.event.event_date|date:"d" }}</span>
+                    <span class="month">{{ ue.event.event_date|date:"M" }}</span>
+                </div>
+                <div class="item-info">
+                    <span class="item-name">{{ ue.event.name }}</span>
+                    <span class="item-meta">{{ ue.event.location }}</span>
+                </div>
+            </div>
+            {% empty %}
+            <p class="empty-text">Nu ai evenimente programate.</p>
+            {% endfor %}
+        </div>
     </div>
 
-    <div class="card">
-        {% if certs_count > 0 %}
-            <p class="card-alert">Ai {{ certs_count }} diplome disponibile</p>
-            <a href="{% url 'user_certificates' %}" class="btn-primary">Descarcă certificate</a>
-        {% else %}
-            <p class="card-alert">Monitorizează-ți punctele EMC</p>
-            <a href="{% url 'user_add_credits' %}" class="btn-primary">Calculator credite</a>
-        {% endif %}
+    <div class="summary-card">
+        <div class="summary-header">
+            <h3>🏅 Certificate Recente</h3>
+            <a href="{% url 'user_certificates' %}" class="view-all">Arhivă</a>
+        </div>
+        <div class="summary-list">
+            {% for cert in latest_certificates %}
+            <div class="summary-item cert-item">
+                <span class="cert-icon">📜</span>
+                <div class="item-info">
+                    <span class="item-name">{{ cert.course.name }}</span>
+                    <span class="item-meta">Obținut la: {{ cert.issue_date|date:"d.m.Y" }}</span>
+                </div>
+            </div>
+            {% empty %}
+            <p class="empty-text">Niciun certificat obținut încă.</p>
+            {% endfor %}
+        </div>
     </div>
 </section>
 {% endblock %}

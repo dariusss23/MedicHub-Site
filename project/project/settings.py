@@ -111,13 +111,14 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ro-ro'
+
+USE_I18N = True
+USE_L10N = True
+USE_TZ = True
 
 TIME_ZONE = 'UTC'
 
-USE_I18N = True
-
-USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
@@ -132,3 +133,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 AUTH_USER_MODEL = 'app.CustomUser'
+
+
+import os
+import platform
+
+# Verificăm dacă suntem pe Windows
+if platform.system() == 'Windows':
+    # Calea către folderul bin unde ai instalat Pango/GTK prin pacman sau installer
+    # Schimbă calea de mai jos cu cea reală de la tine (unde se află libgobject-2.0-0.dll)
+    gtk_bin_path = r'C:\msys64\mingw64\bin' 
+    
+    if os.path.exists(gtk_bin_path):
+        os.add_dll_directory(gtk_bin_path)
+        
