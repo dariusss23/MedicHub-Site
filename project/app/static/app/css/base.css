@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #ffffff; 
+    background-color: #ffffff;
     color: #333;
     line-height: 1.6;
 }
@@ -34,7 +34,7 @@ nav {
     align-items: center;
     font-size: 28px;
     font-weight: bold;
-    color: #008ba3; 
+    color: #008ba3;
     letter-spacing: -1px;
 }
 
@@ -75,7 +75,7 @@ nav ul li ul {
     top: 100%;
     left: 0;
     min-width: 200px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 nav ul li:hover ul {
@@ -90,7 +90,6 @@ main {
     padding: 20px;
 }
 
-/* Stiluri pentru butoanele din Nav */
 .meniu ul {
     display: flex;
     align-items: center;
@@ -140,8 +139,44 @@ footer {
     padding: 30px;
 }
 
+.menu-toggle {
+    display: none;
+    font-size: 26px;
+    color: #008ba3;
+    cursor: pointer;
+}
+
 @media (max-width: 992px) {
-    nav ul {
-        display: none;
+    nav {
+        flex-wrap: wrap;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .meniu ul {
+        display: none !important;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 15px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        padding: 10px 0;
+    }
+
+    .meniu ul.active {
+        display: flex !important;
+    }
+
+    .meniu ul li {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+    
+    .btn-nav-logout {
+        margin-left: 0;
+        margin-top: 10px;
     }
 }

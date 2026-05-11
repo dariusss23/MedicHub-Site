@@ -220,3 +220,27 @@
     line-height: 1.4;
     opacity: 0.8;
 }
+
+@media (max-width: 768px) {
+    .hero-banner {
+        flex-direction: column;
+        height: auto;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .transaction-summary {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .summary-divider {
+        width: 100%;
+        height: 1px;
+        margin: 0;
+    }
+    
+    .transactions-container {
+        grid-template-columns: 1fr;
+    }
+}

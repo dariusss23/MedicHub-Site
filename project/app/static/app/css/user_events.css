@@ -236,3 +236,46 @@
     display: inline-flex;
     margin-top: 20px;
 }
+
+@media (max-width: 768px) {
+    .hero-banner {
+        flex-direction: column;
+        height: auto;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .events-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .controls-group {
+        flex-direction: column;
+    }
+    
+    .event-row {
+        flex-direction: column;
+    }
+    
+    .event-date-box {
+        width: 100%;
+        flex-direction: row;
+        padding: 15px;
+        gap: 10px;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .event-body {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .event-action {
+        margin-right: 0;
+        width: 100%;
+        align-items: flex-start;
+    }
+}

@@ -11,6 +11,8 @@ from django.shortcuts import get_object_or_404
 from weasyprint import HTML
 import tempfile
 from django.utils import translation
+from pathlib import Path
+import os
 
 
 def user_profile(request):
@@ -212,10 +214,19 @@ def export_certificate_pdf(request, cert_id):
     translation.activate('ro')
     
     certificat = get_object_or_404(Certificate, certificate_id=cert_id, user=request.user)
+    
+    images_dir = os.path.join(settings.BASE_DIR, 'app', 'templates', 'app', 'pdf', 'logo')
+    
+    bg_url = Path(os.path.join(images_dir, 'background_certificat_10124.jpg')).as_uri()
+    logo_url = Path(os.path.join(images_dir, 'logo_snmf_7998.png')).as_uri()
+    stamp_url = Path(os.path.join(images_dir, 'asociatia_medicina_de_familie_34124.png')).as_uri()  
 
     context = {
         'cert': certificat,  
         'user': request.user,
+        'bg_url': bg_url,
+        'logo_url': logo_url,
+        'stamp_url': stamp_url,
     }
 
     html_string = render_to_string('app/pdf/certificate_template.html', context)

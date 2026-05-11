@@ -36,8 +36,8 @@
 .search-box { 
     position: relative; 
     flex: 1; 
-
 }
+
 .input-search { 
     width: 100%; 
     padding: 10px 15px 10px 40px; 
@@ -74,6 +74,10 @@
     border: 1px solid #eee;
     overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
+    
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .cert-card:hover {
@@ -110,6 +114,9 @@
 
 .cert-info {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .cert-info h3 {
@@ -117,14 +124,14 @@
     color: #111;
     margin-bottom: 8px;
     line-height: 1.4;
-    height: 44px;
-    overflow: hidden;
+    min-height: 44px;
 }
 
 .cert-date {
     font-size: 13px;
     color: #888;
-    margin-bottom: 20px;
+    margin-bottom: 15px; 
+    margin-top: auto; 
 }
 
 .cert-actions {
@@ -152,20 +159,19 @@
     color: white;
 }
 
-/* --- STIL UNIVERSAL NO-DATA --- */
 .no-data {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     
-    grid-column: 1 / -1; /* Ocupă tot rândul în grid-ul de certificate */
+    grid-column: 1 / -1;
     min-height: 350px;
     padding: 40px;
     margin: 20px 0;
     
     background: white;
-    border: 2px dashed #d1d5db; /* Aceeași bordură gri punctată */
+    border: 2px dashed #d1d5db;
     border-radius: 16px;
     text-align: center;
 }
@@ -188,4 +194,18 @@
     color: #6b7280;
     max-width: 350px;
     line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .hero-banner {
+        flex-direction: column;
+        height: auto;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .cert-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
 }

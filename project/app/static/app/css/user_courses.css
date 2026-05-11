@@ -27,7 +27,7 @@
     border-radius: 12px;
     display: flex;
     padding: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     border: 1px solid #eee;
     margin-bottom: 20px;
     transition: 0.2s;
@@ -94,18 +94,18 @@
     gap: 8px;
 }
 
-.rating-val { 
-    font-weight: bold; 
+.rating-val {
+    font-weight: bold;
     font-size: 14px;
 }
 
-.stars { 
-    color: #ffc107; 
-    font-size: 16px; 
+.stars {
+    color: #ffc107;
+    font-size: 16px;
 }
 
-.star-dim { 
-    color: #ddd; 
+.star-dim {
+    color: #ddd;
 }
 
 .prog-section {
@@ -158,10 +158,10 @@
     color: green;
 }
 
-.download-icon-link span { 
-    font-size: 10px; 
-    font-weight: bold; 
-    text-transform: uppercase; 
+.download-icon-link span {
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
     color: green;
 }
 
@@ -191,15 +191,15 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
+
     min-height: 350px;
     margin: 20px 0;
     padding: 40px;
-    
+
     background: #fdfdfd;
     border: 2px dashed #d1d5db;
     border-radius: 16px;
-    
+
     color: #6b7280;
     transition: all 0.3s ease;
 }
@@ -209,7 +209,8 @@
     background: #f0fdfa;
 }
 
-.no-data i, .no-data .empty-icon {
+.no-data i,
+.no-data .empty-icon {
     font-size: 48px;
     margin-bottom: 15px;
     color: #9ca3af;
@@ -225,4 +226,34 @@
     font-size: 14px;
     margin-top: 8px;
     opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .course-row {
+        flex-direction: column;
+    }
+
+    .course-img {
+        width: 100%;
+        height: 200px;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    
+    .course-mid {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .course-top {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .hero-banner {
+        flex-direction: column;
+        height: auto;
+        text-align: center;
+        gap: 20px;
+    }
 }

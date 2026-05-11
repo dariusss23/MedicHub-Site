@@ -27,43 +27,44 @@
     background: white;
     padding: 15px 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     margin-bottom: 30px;
     gap: 15px;
 }
 
 .search-box {
     position: relative;
-    flex: 1; 
+    flex: 1;
 }
 
-.input-search { 
-    width: 100%; 
-    padding: 10px 15px 10px 40px; 
-    border: 1px solid #eee; 
-    border-radius: 8px; 
-    outline: none; 
+.input-search {
+    width: 100%;
+    padding: 10px 15px 10px 40px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    outline: none;
 }
 
-.icon-search { 
-    position: absolute; 
-    left: 15px; 
-    top: 50%; 
-    transform: translateY(-50%); 
-    color: #aaa; 
+.icon-search {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
 }
 
-.controls-group { 
-    display: flex; 
-    gap: 12px; 
+.controls-group {
+    display: flex;
+    gap: 12px;
 }
 
-.select-filter, .select-year { 
-    padding: 8px 12px; 
-    border: 1px solid #eee; 
-    border-radius: 8px; 
-    color: #555; 
-    outline: none; 
+.select-filter,
+.select-year {
+    padding: 8px 12px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    color: #555;
+    outline: none;
 }
 
 .magazines-grid {
@@ -76,7 +77,7 @@
     background: white;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease;
     border: 1px solid #eee;
 }
@@ -148,7 +149,10 @@
     margin-bottom: 8px;
 }
 
-.mag-tag.blue { background: #eef2ff; color: #2f55d4; }
+.mag-tag.blue {
+    background: #eef2ff;
+    color: #2f55d4;
+}
 
 .magazine-info h3 {
     font-size: 16px;
@@ -193,12 +197,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
+
     grid-column: 1 / -1;
     min-height: 350px;
     padding: 40px;
     margin: 20px 0;
-    
+
     background: white;
     border: 2px dashed #d1d5db;
     border-radius: 16px;
@@ -223,4 +227,22 @@
     color: #6b7280;
     max-width: 350px;
     line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .hero-banner {
+        flex-direction: column;
+        height: auto;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .magazines-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .controls-group {
+        flex-direction: column;
+    }
 }
